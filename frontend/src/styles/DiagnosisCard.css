@@ -3,9 +3,13 @@
     position: relative;
     width: 400px;
     height: 144px;
-    border: 4px solid #000000;
+    border: 1px solid #CFCFCF;
     z-index: 40;
     border-radius: 12px;
+  }
+  .rectangle:hover {
+    transition: 0.2s;
+    border: 2px solid #000000;
   }
   .frame-2 {
     display: flex;
@@ -39,7 +43,7 @@
     width: 229px;
     z-index: 31;
   }
-  .transvaginal-ultrasound {
+  .test-name {
     flex-shrink: 0;
     flex-basis: auto;
     position: relative;
@@ -95,7 +99,7 @@
     white-space: nowrap;
     z-index: 35;
   }
-  .check-growth {
+  .purpose {
     display: block;
     position: relative;
     height: 18px;

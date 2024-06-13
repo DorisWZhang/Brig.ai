@@ -1,14 +1,15 @@
 import React from 'react'
 import '../styles/DiagnosisCard.css'
 
-function DiagnosisCard() {
+
+export default function DiagnosisCard({ name, purpose }) {
   return (
     <div className='rectangle'>
           <div className='frame-2'>
             <div className='frame-3'>
               <div className='frame-4'>
-                <span className='transvaginal-ultrasound'>
-                  Transvaginal Ultrasound
+                <span className='test-name'>
+                  {name}
                 </span>
               </div>
             </div>
@@ -18,11 +19,9 @@ function DiagnosisCard() {
               </div>
             </button>
           </div>
-          <span className='check-growth'>
-            Check for cysts, fibroid tumors, or other growths.
+          <span className='purpose'>
+            {purpose}
           </span>
         </div>
-  )
+  );
 }
-
-export default DiagnosisCard

@@ -1,12 +1,11 @@
 export const DiagnosisList = [
     {
-        name:"Pelvic Exam",
-        purpose: "Check for "
-        
+        name: "Transvaginal Ultrasound",
+        purpose: "Check for cysts, fibroid tumors, or other growths."
     },
     {
-        name: "Transvaginal Ultrasound",
-        purpose: "Check for"
+        name:"Pelvic Exam",
+        purpose: "Check for "
     },
     
 ];

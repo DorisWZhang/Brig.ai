@@ -6,11 +6,9 @@ import GeneratedQuestion from '../components/GeneratedQuestion';
 import { GeneratedQuestionsList } from '../helpers/GeneratedQuestions';
 import { useParams } from 'react-router-dom';
 import Chatbot from "../components/Chatbot"
-
+import { DiagnosisList } from '../helpers/DiagnosticTests';
 
 export default function Results() {
-
-  
 
   return (
     <div className='main-container'>
@@ -23,33 +21,19 @@ export default function Results() {
         <span className='back'>Back</span>
       </div>
       <div className='flex-row-eb'>
-        <DiagnosisCard/>
-        <div className='frame-6'>
-          <div className='frame-7'>
-            <div className='frame-8'>
-              <div className='frame-9'>
-                <div className='frame-a'>
-                  <span className='pelvic-exam'>Pelvic Exam</span>
-                </div>
-              </div>
-              <button className='button-frame'>
-                <div className='badge-b'>
-                  <span className='urgent-c'>Urgent</span>
-                </div>
-              </button>
-            </div>
-            <span className='check-growth-d'>
-              Check for cysts, fibroid tumors, or other growths.
-            </span>
-          </div>
-        </div>
+        {DiagnosisList.map((test, idx) =>{
+          return (    
+            <DiagnosisCard id={idx} name={test.name} purpose={test.purpose}/>
+          );
+        })}
+        
       </div>
       <div className='frame-e'>
-
         <div className='gen-questions'>
           {GeneratedQuestionsList.map((question, idx) => {
             return (
-              <GeneratedQuestion id = {idx} question={question.question}/>
+              <GeneratedQuestion id = {idx} question={question.question}
+              icon={question.icon}/>
             );
           })}
         </div>
