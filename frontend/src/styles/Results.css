@@ -66,8 +66,9 @@
     border-radius: 32px;
   }
   .button-medium:hover {
+    cursor: pointer;
     background-color: #EAECEE;
-    transition-duration: 0.5s;
+    transition-duration: 0.4s;
   }
   .back {
     display: flex;
@@ -174,4 +175,13 @@
     align-items: flex-start;
     flex-wrap: nowrap;
     flex-shrink: 0;
+  }
+  .gen-questions {
+    margin-top: 100px;
+    margin-left:10%;
+  }
+  
+  .chatbot {
+    margin-top: 25%;
+    margin-left: 10%;
   }

@@ -6,7 +6,12 @@ import Results from './pages/Results'
 function App() {
   return (
     <div>
-      <Results/>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Results/>}>
+          </Route>
+        </Routes>
+      </Router>
     </div>
   )
 }

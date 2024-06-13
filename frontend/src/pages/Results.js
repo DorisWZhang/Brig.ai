@@ -3,8 +3,15 @@ import '../styles/Results.css';
 import { FaArrowLeft } from "react-icons/fa6";
 import DiagnosisCard from "../components/DiagnosisCard"
 import GeneratedQuestion from '../components/GeneratedQuestion';
+import { GeneratedQuestionsList } from '../helpers/GeneratedQuestions';
+import { useParams } from 'react-router-dom';
+import Chatbot from "../components/Chatbot"
+
 
 export default function Results() {
+
+  
+
   return (
     <div className='main-container'>
       <div className='frame'>
@@ -38,43 +45,19 @@ export default function Results() {
         </div>
       </div>
       <div className='frame-e'>
-        <div className='frame-f'>
 
-
-          <GeneratedQuestion/>
-
-
-          <div className='frame-15'>
-            <div className='user-speak-rounded'>
-              <div className='flex-row-d'>
-                <div className='vector-16' />
-                <div className='vector-17' />
-                <div className='vector-18' />
-              </div>
-              <div className='vector-19' />
-            </div>
-            <span className='transvaginal-ultrasound-1a'>
-              What are my rights in asking for a transvaginal ultrasound?
-            </span>
-          </div>
+        <div className='gen-questions'>
+          {GeneratedQuestionsList.map((question, idx) => {
+            return (
+              <GeneratedQuestion id = {idx} question={question.question}/>
+            );
+          })}
         </div>
-        <div className='frame-1b'>
-          <button className='button'>
-            <span className='intrusive-procedure'>
-              Is this procedure intrusive?
-            </span>
-          </button>
-          <button className='button-1c'>
-            <div className='linear-medical-note'>
-              <div className='vector-1d' />
-            </div>
-            <span className='need-test'>Why do I need this test?</span>
-          </button>
+
+        <div className='chatbot'>
+          <Chatbot/>
         </div>
-      </div>
-      <div className='rectangle-1e'>
-        <div className='frame-1f' />
-        <span className='message-novi'>Message Novi</span>
+
       </div>
     </div>
   );
