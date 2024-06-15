@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import Menstrual from './pages/endo questions/Menstrual';
+import Question from './pages/Question';
 import Results from './pages/Results'
 
 function App() {
@@ -9,6 +9,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Results/>}>
+          
           </Route>
         </Routes>
       </Router>

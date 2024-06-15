@@ -15,10 +15,13 @@ export default function Results() {
       <div className='frame'>
         <div className='frame-1'>
           <button className='button-medium'>
-              <FaArrowLeft/>
+          <FaArrowLeft/>
           </button>
         </div>
         <span className='back'>Back</span>
+      </div>
+      <div className='message'>
+        Based on your symptoms, here are the diagnostic tests you may want to seek out. 
       </div>
       <div className='flex-row-eb'>
         {DiagnosisList.map((test, idx) =>{
@@ -41,7 +44,9 @@ export default function Results() {
         <div className='chatbot'>
           <Chatbot/>
         </div>
-
+          <div className='note'>
+          All recommended diagnosis tools must be administered and discussed with a licensed medical professional. 
+          </div>
       </div>
     </div>
   );

@@ -21,7 +21,6 @@
   button {
     outline: 0;
   }
-  
   .main-container {
     position: relative;
     width: 100%;
@@ -98,53 +97,6 @@
     margin: 17px 0 0 162px;
     z-index: 41;
   }
-  .frame-6 {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    flex-wrap: nowrap;
-    flex-shrink: 0;
-    gap: 10px;
-    position: relative;
-    width: 393px;
-    padding: 25px 35px 25px 35px;
-    border: 1px solid rgba(206, 206, 206, 0.5);
-    z-index: 41;
-    overflow: hidden;
-    border-radius: 12px;
-  }
-  .frame-7 {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    flex-wrap: nowrap;
-    flex-shrink: 0;
-    gap: 12px;
-    position: relative;
-    width: 323px;
-    z-index: 42;
-  }
-  .frame-8 {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    flex-wrap: nowrap;
-    flex-shrink: 0;
-    gap: 12px;
-    position: relative;
-    width: 114px;
-    z-index: 43;
-  }
-  .frame-9 {
-    display: flex;
-    align-items: flex-start;
-    flex-wrap: nowrap;
-    flex-shrink: 0;
-    gap: 7px;
-    position: relative;
-    width: 114px;
-    z-index: 44;
-  }
   .frame-a {
     display: flex;
     flex-direction: column;
@@ -177,11 +129,26 @@
     flex-shrink: 0;
   }
   .gen-questions {
-    margin-top: 100px;
+    margin-top: 70px;
     margin-left:10%;
   }
   
   .chatbot {
-    margin-top: 25%;
+    margin-top: 24%;
     margin-left: 10%;
+  }
+  .message {
+    font-family: Inter, var(--default-font-family);
+    font-size: 17px;
+    color: #6e7072;
+    margin-left:150px;
+    margin-top:20px;
+    margin-bottom:30px;
+  }
+  .note {
+    color: #6e7072;
+    font-family: Inter, var(--default-font-family);
+    font-size: 13px;
+    margin-top: 15px;
+    margin-left:450px;
   }
