@@ -1,34 +1,25 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS
 import pickle
-import numpy as np
+import pandas as pd
 
 app = Flask(__name__)
-CORS(app)
 
-# Load the logistic regression model from the pickle file
-with open('Pcos_LR.pkl', 'rb') as file:
-    model = pickle.load(file)
-
-@app.route('/')
-def home():
-    return "<h1>hello</h1>"
+# Load pre-trained model
+with open('AdaBoost_model.pkl', 'rb') as file:
+    clf = pickle.load(file)
 
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
-        # Get JSON data from the request
         data = request.json
-        # Extract features from the JSON data and convert to numpy array
-        input_features = np.array(data['features']).reshape(1, -1)
-        # Use the model to predict the class
-        prediction = model.predict(input_features)
-        # Return the prediction result as JSON
-        return jsonify({'prediction': int(prediction[0])})
+        if isinstance(data, list):  # Ensure that the input is a list
+            df = pd.DataFrame(data)
+            prediction = clf.predict(df)
+            return jsonify({'prediction': prediction.tolist()})
+        else:
+            return jsonify({'error': 'Input data should be a list of dictionaries'}), 400
     except Exception as e:
-        # If there's an error, return an error message
-        return jsonify({'error': str(e)})
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    # Run the Flask application in debug mode
     app.run(debug=True)

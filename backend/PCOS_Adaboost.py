@@ -4,8 +4,6 @@ from sklearn.ensemble import AdaBoostClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn import metrics
-from sklearn.linear_model import LogisticRegression
-from numpy.linalg import norm
 import pickle
 
 # Load the CSV file into a DataFrame
@@ -40,20 +38,6 @@ y = label_pcos.values  # Target
 # Split dataset into training set and test set
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42) # 70% training and 30% test
 
-# Logistic Regression Model
-clf = LogisticRegression(penalty="l2", C=1, solver='liblinear') # smaller C means more regularization -> simpler model
-clf.fit(X_train, y_train)
-train_accuracy = clf.score(X_train, y_train)
-test_accuracy = clf.score(X_test, y_test)
-coef = clf.coef_.squeeze()
-weights_norm = norm(coef, 2)
-num_weights_zero = len(coef) - np.count_nonzero(coef)
-
-with open('Pcos_LR.pkl', 'wb') as file:
-    pickle.dump(clf, file)
-
-print(f"Train accuracy: {train_accuracy:.2%}, Test accuracy: {test_accuracy:.2%}, Weights Norm: {weights_norm:.2e}, Number of weights equal to zero: {num_weights_zero}")
-
 # Initialize the AdaBoost Classifier with DecisionTreeClassifier
 abc = AdaBoostClassifier(estimator=DecisionTreeClassifier(max_depth=1), n_estimators=50, learning_rate=1, algorithm='SAMME')
 
@@ -70,8 +54,17 @@ best_model = grid_search.best_estimator_
 # Train the best AdaBoost Classifier
 best_model.fit(X_train, y_train)
 
+# Save the trained AdaBoost model
+with open('AdaBoost_model.pkl', 'wb') as file:
+    pickle.dump(best_model, file)
+
 # Predict the response for the test dataset
 y_pred = best_model.predict(X_test)
 
+# Calculate train and test accuracy
+train_accuracy = best_model.score(X_train, y_train)
+test_accuracy = best_model.score(X_test, y_test)
+
 # Model Accuracy
+print(f"Train accuracy: {train_accuracy:.2%}, Test accuracy: {test_accuracy:.2%}")
 print("Accuracy:", metrics.accuracy_score(y_test, y_pred))
