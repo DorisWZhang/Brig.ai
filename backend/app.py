@@ -14,7 +14,9 @@ def predict():
         data = request.json
         if isinstance(data, list):  # Ensure that the input is a list
             df = pd.DataFrame(data)
+            print("Received data:", df)  # Debug print
             prediction = clf.predict(df)
+            print("Predictions:", prediction)  # Debug print
             return jsonify({'prediction': prediction.tolist()})
         else:
             return jsonify({'error': 'Input data should be a list of dictionaries'}), 400

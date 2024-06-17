@@ -11,18 +11,21 @@ file_path = '/home/laurenyip/AI4GOODLAB/AI4GOOD_projects/Project/ai4good/backend
 df = pd.read_csv(file_path)
 print("DataFrame loaded successfully.")
 
+# Clean column names
+df.columns = df.columns.str.strip()
+
 # Extract the label
 label_pcos = df["PCOS (Y/N)"]
 
-# Drop unnecessary columns
+# Drop unnecessary columns if they exist
 columns_to_drop = [
     "Sl. No", "Patient File No.", "PCOS (Y/N)", "Unnamed: 44", "II    beta-HCG(mIU/mL)", 
     "AMH(ng/mL)", "Endometrium (mm)", "Avg. F size (R) (mm)", "Avg. F size (L) (mm)", 
     "Follicle No. (R)", "Follicle No. (L)", "RBS(mg/dl)", "PRG(ng/mL)", "Vit D3 (ng/mL)", 
     "PRL(ng/mL)", "AMH(ng/mL)", "TSH (mIU/L)", "FSH/LH", "LH(mIU/mL)", "FSH(mIU/mL)", 
-    "II    beta-HCG(mIU/mL)", "  I   beta-HCG(mIU/mL)", "Hb(g/dl)"
+    "II    beta-HCG(mIU/mL)", "I   beta-HCG(mIU/mL)", "Hb(g/dl)"
 ]
-df.drop(columns=columns_to_drop, axis=1, inplace=True)
+df = df.drop(columns=[col for col in columns_to_drop if col in df.columns], axis=1)
 
 # Fill missing values
 df['Marraige Status (Yrs)'] = df['Marraige Status (Yrs)'].fillna(df['Marraige Status (Yrs)'].median())
@@ -32,8 +35,8 @@ df['Fast food (Y/N)'] = df['Fast food (Y/N)'].fillna(1)
 print(df.head(5))
 
 # Split the dataset into features and target
-X = df.values  # Features (all columns except the last)
-y = label_pcos.values  # Target
+X = df  # Use the DataFrame with feature names
+y = label_pcos  # Target
 
 # Split dataset into training set and test set
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42) # 70% training and 30% test
