@@ -36,38 +36,39 @@ button {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   flex-shrink: 0;
   gap: 340px;
-  position: relative;
+  position: absolute;
   width: 1026px;
   z-index: 6;
 }
 .back {
   margin-left: -450%;
+  text-decoration: none;
 }
 .frame-4 {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   flex-shrink: 0;
   gap: 24px;
   position: relative;
   width: 566px;
   z-index: 7;
   margin-left: -1000px;
-  
 }
+
 .symp-question {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   flex-shrink: 0;
-  position: relative;
-  width: 566px;
+  position: absolute;
+  width: 1100px;
   height: 47px;
-  margin-top:30%;
+  margin-top:20%;
   color: #000000;
   font-family: Inter, var(--default-font-family);
   font-size: 24px;
@@ -76,16 +77,29 @@ button {
   text-align: left;
   z-index: 8;
 }
+.frame-5 {
+  display: flex;
+  white-space: normal;
+  margin-top:80%;
+  position:absolute;
+  flex-wrap: wrap; /* Ensures the items wrap to the next line */
+  width: 100%; /* Ensure it takes full width of parent */
+}
+.symp-2 {
+  position: absolute;
+  margin-top:125%;
+}
 .button-frame {
-  margin-top: 200%;
+  margin-top: 155%;
 }
 .continue-button {
+  margin-left: -530px;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   flex-shrink: 0;
-  position: relative;
+  position: absolute;
   width: 1026px;
   height: 62px;
   padding: 24px 165px 24px 165px;

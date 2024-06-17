@@ -1,8 +1,15 @@
 import React from 'react'
+import "../styles/Symptom.css"
 
-function Symptom() {
+function Symptom({symptom}) {
   return (
-    <div>Symptom</div>
+    <div>
+        <button className='symptom-button'>
+        <span className='symptom'> 
+          {symptom}
+        </span>
+    </button>
+    </div>
   )
 }
 
