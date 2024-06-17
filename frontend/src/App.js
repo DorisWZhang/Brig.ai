@@ -1,8 +1,19 @@
 import React from 'react'
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import Question from './pages/Question';
+import Results from './pages/Results'
 
 function App() {
   return (
-    <div>App</div>
+    <div>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Results/>}>
+          
+          </Route>
+        </Routes>
+      </Router>
+    </div>
   )
 }
 

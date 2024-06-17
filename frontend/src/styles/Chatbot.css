@@ -1,0 +1,14 @@
+.message-novi {
+    height: 55px;
+    font: 15px "Inter";
+    background-color: #EAECEE;
+    border: none;
+    border-radius: 300px;
+    width: 1250px;
+    text-indent: 25px;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('C:\Projects\ai4good\frontend\src\assets\fonts\Inter\Inter-VariableFont_slnt,wght.ttf') format('truetype');
+}
