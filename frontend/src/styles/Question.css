@@ -5,12 +5,12 @@
     "Source Han Sans CN", sans-serif;
 }
 
-.main-container {
+.question-screen {
   overflow: hidden;
 }
 
-.main-container,
-.main-container * {
+.question-screen,
+.question-screenr * {
   box-sizing: border-box;
 }
 
@@ -21,54 +21,51 @@ button {
   outline: 0;
 }
 
-.main-container {
-  display: flex;
+.question-screen {
   justify-content: center;
-  position: relative;
-  width: 1280px;
-  height: 832px;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
   margin: 0 auto;
   background: #ffffff;
   overflow: hidden;
 }
 
 .frame {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  flex-shrink: 0;
-  gap: 340px;
+  align-items: center;
   position: absolute;
-  width: 1026px;
-  z-index: 6;
+  width: 100%;
 }
 .back {
-  margin-left: -450%;
+  margin-left: 5%;
+  margin-top: 2%;
   text-decoration: none;
+  display: flex;
+  width: 216px;
+  height: 17px;
+  color: #4f5a67;
+  font-family: Inter, var(--default-font-family);
+  font-size: 14px;
+  font-weight: 400;
+
 }
 .frame-4 {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  flex-shrink: 0;
-  gap: 24px;
-  position: relative;
-  width: 566px;
+  align-items: left;
+  position: absolute;
+  width: 100%;
   z-index: 7;
-  margin-left: -1000px;
+  margin-left: 200px;
+  margin-top: 100px;
 }
 
 .symp-question {
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-shrink: 0;
   position: absolute;
   width: 1100px;
   height: 47px;
-  margin-top:20%;
+  margin-top:0%;
   color: #000000;
   font-family: Inter, var(--default-font-family);
   font-size: 24px;
@@ -77,23 +74,24 @@ button {
   text-align: left;
   z-index: 8;
 }
-.frame-5 {
+.symp-1 {
   display: flex;
   white-space: normal;
-  margin-top:80%;
+  margin-top:12%;
   position:absolute;
   flex-wrap: wrap; /* Ensures the items wrap to the next line */
   width: 100%; /* Ensure it takes full width of parent */
 }
 .symp-2 {
   position: absolute;
-  margin-top:125%;
+  margin-top:20%;
 }
 .button-frame {
-  margin-top: 155%;
+  align-items: center;
+  margin-top: 45%;
 }
 .continue-button {
-  margin-left: -530px;
+  margin-left: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -113,5 +111,4 @@ button {
   font-family: Inter, var(--default-font-family);
   font-size: 20px;
   line-height: 16px;
-  
 }

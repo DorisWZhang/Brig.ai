@@ -5,13 +5,13 @@
       "Source Han Sans CN", sans-serif;
   }
   
-  .main-container {
+  .main {
     overflow: hidden;
     
   }
   
-  .main-container,
-  .main-container * {
+  .main,
+  .main * {
     box-sizing: border-box;
   }
   
@@ -21,7 +21,7 @@
   button {
     outline: 0;
   }
-  .main-container {
+  .main {
     position: relative;
     width: 100%;
     height: 100vh;
@@ -29,7 +29,7 @@
     background: #fafafa;
     overflow: hidden;
   }
-  .frame {
+  .main-frame {
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
@@ -69,7 +69,7 @@
     background-color: #EAECEE;
     transition-duration: 0.4s;
   }
-  .back {
+  .back-to-qs {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;

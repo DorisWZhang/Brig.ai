@@ -11,14 +11,14 @@ import { DiagnosisList } from '../helpers/DiagnosticTests';
 export default function Results() {
 
   return (
-    <div className='main-container'>
-      <div className='frame'>
+    <div className='main'>
+      <div className='main-frame'>
         <div className='frame-1'>
           <button className='button-medium'>
           <FaArrowLeft/>
           </button>
         </div>
-        <span className='back'>Back</span>
+        <span className='back-to-qs'>Back</span>
       </div>
       <div className='message'>
         Based on your symptoms, here are the diagnostic tests you may want to seek out. 

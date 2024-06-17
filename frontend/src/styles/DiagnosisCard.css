@@ -32,7 +32,7 @@
     width: 229px;
     z-index: 30;
   }
-  .frame-4 {
+  .test-frame {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -57,7 +57,7 @@
     white-space: nowrap;
     z-index: 32;
   }
-  .frame-5 {
+  .badge-frame {
     display: flex;
     align-items: flex-start;
     flex-wrap: nowrap;

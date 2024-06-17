@@ -7,13 +7,13 @@ export default function DiagnosisCard({ name, purpose }) {
     <div className='rectangle'>
           <div className='frame-2'>
             <div className='frame-3'>
-              <div className='frame-4'>
+              <div className='test-frame'>
                 <span className='test-name'>
-                  {name}
+                {name}
                 </span>
               </div>
             </div>
-            <button className='frame-5'>
+            <button className='badge-frame'>
               <div className='badge'>
                 <span className='urgent'>Urgent</span>
               </div>

@@ -6,19 +6,27 @@ import Symptom from "../components/Symptom"
 import { useParams } from 'react-router-dom';
 
 
+/* Save the information, navigate to next question
+*/
+function clickContinue(){
+
+}
+
 function Question() {
+
+
   const { id } = useParams();
   const question = QuestionList[0];
 
   return (
-    <div className='main-container'>
+    <div className='question-screen'>
         <div className='frame'>
           <Link className='back'> Back </Link>
           <div className='frame-4'>
             <span className='symp-question'>
               {question.question} 
             </span>
-            <div className='frame-5'>
+            <div className='symp-1'>
               {question.symptoms.slice(0,4).map((symptom, index) => {
                 return (
                   <Symptom key={index} symptom={symptom} />
