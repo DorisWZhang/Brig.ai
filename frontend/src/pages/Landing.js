@@ -3,7 +3,7 @@ import React from 'react'
 function Landing() {
   return (
     <div>
-        <a href="/results">
+        <a href="/q">
   <button>Start</button>
 </a>
     </div>

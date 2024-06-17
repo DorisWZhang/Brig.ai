@@ -38,7 +38,7 @@ button {
 }
 .back {
   margin-left: 5%;
-  margin-top: 2%;
+  margin-top: 3%;
   text-decoration: none;
   display: flex;
   width: 216px;
@@ -47,7 +47,9 @@ button {
   font-family: Inter, var(--default-font-family);
   font-size: 14px;
   font-weight: 400;
-
+  background:none;
+  border:none;
+  cursor: pointer;
 }
 .frame-4 {
   display: flex;

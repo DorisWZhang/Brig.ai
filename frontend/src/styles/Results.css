@@ -59,6 +59,7 @@
     width: 40px;
     padding: 12px 12px 12px 12px;
     background: #ffffff;
+    color:black;
     border: 1px solid #eaecee;
     z-index: 2;
     overflow: hidden;

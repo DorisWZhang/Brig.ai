@@ -19,7 +19,13 @@
   .symptom-button:hover {
     cursor: pointer;
     background-color: #eaecee;
-    transition-duration: 0.4s;
+    transition-duration: 0.3s;
+  }
+
+  .symptom-button.selected {
+    /* styles for the selected state */
+    background-color: #6e7072; /* Example: Change background color when selected */
+    color: white;
   }
   
   .symptom {

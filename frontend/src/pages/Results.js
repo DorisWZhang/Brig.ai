@@ -4,9 +4,10 @@ import { FaArrowLeft } from "react-icons/fa6";
 import DiagnosisCard from "../components/DiagnosisCard"
 import GeneratedQuestion from '../components/GeneratedQuestion';
 import { GeneratedQuestionsList } from '../helpers/GeneratedQuestions';
-import { useParams } from 'react-router-dom';
+import { useParams, Link} from 'react-router-dom';
 import Chatbot from "../components/Chatbot"
 import { DiagnosisList } from '../helpers/DiagnosticTests';
+
 
 export default function Results() {
 
@@ -14,9 +15,9 @@ export default function Results() {
     <div className='main'>
       <div className='main-frame'>
         <div className='frame-1'>
-          <button className='button-medium'>
-          <FaArrowLeft/>
-          </button>
+          <Link className='button-medium' to="/q">
+          <FaArrowLeft />
+          </Link>
         </div>
         <span className='back-to-qs'>Back</span>
       </div>
