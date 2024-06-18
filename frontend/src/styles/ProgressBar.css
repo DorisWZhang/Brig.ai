@@ -1,0 +1,28 @@
+.container {
+    overflow: hidden;
+  }
+  
+  .container,
+  .container * {
+    box-sizing: border-box;
+  }
+  
+  input,
+  select,
+  textarea,
+  button {
+    outline: 0;
+  }
+  
+  .container {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    position: relative;
+    width: 1086px;
+    height: 16px;
+    margin: 0 auto;
+    padding: 0 814.5px 0 0;
+    background: #e5e5e5;
+    border-radius: 8px;
+  }
