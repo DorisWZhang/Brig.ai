@@ -9,13 +9,36 @@ function Question({}) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const navigate = useNavigate();
   const question = QuestionList[currentQuestionIndex];
-  const symptoms = [];
 
- 
+  const saveSymptoms = () => {
+    const symptom = {}
+    const questionSymptoms = question.symptoms[currentQuestionIndex]
+    if (questionSymptoms) {
+      for (let i = 0; i < questionSymptoms.length; i++) {
+        symptom[questionSymptoms[i].textContent] = questionSymptoms[i].isSelected
+      };
+    }
+
+    fetch('http://127.0.0.1:5000/update', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(symptom)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+  };
 
   const handleContinueClick = () => {
     if (currentQuestionIndex < QuestionList.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
+      saveSymptoms()
     } else {
       navigate('/results', { state: { questionList: QuestionList } });
     }
