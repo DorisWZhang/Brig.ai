@@ -4,17 +4,20 @@ import { Link, useNavigate } from 'react-router-dom';
 import { QuestionList } from '../helpers/Questionnaire';
 import Symptom from "../components/Symptom";
 
-function Question() {
+function Question({}) {
+
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const navigate = useNavigate();
   const question = QuestionList[currentQuestionIndex];
+  const symptoms = [];
+
+ 
 
   const handleContinueClick = () => {
     if (currentQuestionIndex < QuestionList.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
-      // Handle the case when all questions are answered, e.g., navigate to a summary page
-      navigate('/results');
+      navigate('/results', { state: { questionList: QuestionList } });
     }
   };
 
@@ -22,14 +25,14 @@ function Question() {
     if (currentQuestionIndex === 0) {
       navigate('/');
     } else {
-      setCurrentQuestionIndex(currentQuestionIndex -1);
+      setCurrentQuestionIndex(currentQuestionIndex - 1);
     }
-  }
+  };
 
   return (
     <div className='question-screen'>
       <div className='frame'>
-      <button className='back' onClick={handleBackClick}>Back</button>
+        <button className='back' onClick={handleBackClick}>Back</button>
         <div className='frame-4'>
           <span className='symp-question'>
             {question.question}
@@ -49,7 +52,7 @@ function Question() {
         </div>
         <div className='button-frame'>
           <button className='continue-button' onClick={handleContinueClick}>
-            Continue
+            {currentQuestionIndex < QuestionList.length - 1 ? 'Continue' : 'View your Results'}
           </button>
         </div>
       </div>
