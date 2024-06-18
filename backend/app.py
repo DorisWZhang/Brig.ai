@@ -15,9 +15,17 @@ def predict():
         if isinstance(data, list):  # Ensure that the input is a list
             df = pd.DataFrame(data)
             print("Received data:", df)  # Debug print
-            prediction = clf.predict(df)
-            print("Predictions:", prediction)  # Debug print
-            return jsonify({'prediction': prediction.tolist()})
+
+            # Ensure that column names are stripped of leading/trailing whitespace
+            df.columns = df.columns.str.strip()
+
+            # Predict probabilities using the classifier
+            prediction_probabilities = clf.predict_proba(df)
+            print("Prediction probabilities:", prediction_probabilities)  # Debug print
+
+            # Convert probabilities to a list of lists, negative, positive
+            prediction_probabilities_list = prediction_probabilities.tolist()
+            return jsonify({'prediction_probabilities': prediction_probabilities_list})
         else:
             return jsonify({'error': 'Input data should be a list of dictionaries'}), 400
     except Exception as e:

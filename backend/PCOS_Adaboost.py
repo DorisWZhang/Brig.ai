@@ -71,3 +71,5 @@ test_accuracy = best_model.score(X_test, y_test)
 # Model Accuracy
 print(f"Train accuracy: {train_accuracy:.2%}, Test accuracy: {test_accuracy:.2%}")
 print("Accuracy:", metrics.accuracy_score(y_test, y_pred))
+
+
