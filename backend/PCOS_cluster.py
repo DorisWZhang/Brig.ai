@@ -1,7 +1,6 @@
-import os
+
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
+
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import GradientBoostingClassifier
@@ -9,13 +8,13 @@ from sklearn.metrics import accuracy_score, classification_report
 from sklearn.model_selection import GridSearchCV
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LogisticRegression
+
 from sklearn.cluster import KMeans
-import seaborn as sns
+
 import pickle
 
 # Load the CSV file into a DataFrame
-file_path = '/home/laurenyip/AI4GOODLAB/AI4GOOD_projects/Project/ai4good/backend/PCOS_data.csv'
+file_path = 'PCOS_data.csv'
 df = pd.read_csv(file_path)
 print("DataFrame loaded successfully.")
 
@@ -27,7 +26,7 @@ label_pcos = df["PCOS (Y/N)"]
 
 # Drop unnecessary columns if they exist
 columns_to_drop = [
-    "Sl. No", "Patient File No.", "PCOS (Y/N)", "Unnamed: 44", "II    beta-HCG(mIU/mL)", 
+    "Sl. No", "Blood Group", "BMI", "Patient File No.", "PCOS (Y/N)", "Unnamed: 44", "II    beta-HCG(mIU/mL)", 
     "AMH(ng/mL)", "Endometrium (mm)", "Avg. F size (R) (mm)", "Avg. F size (L) (mm)", 
     "Follicle No. (R)", "Follicle No. (L)", "RBS(mg/dl)", "PRG(ng/mL)", "Vit D3 (ng/mL)", 
     "PRL(ng/mL)", "AMH(ng/mL)", "TSH (mIU/L)", "FSH/LH", "LH(mIU/mL)", "FSH(mIU/mL)", 
@@ -116,8 +115,4 @@ kmeans.fit(X)
 with open('KMeans_model.pkl', 'wb') as file:
     pickle.dump(kmeans, file)
 
-# Make a single prediction (example)
-row_index = 0
-row = X_test[row_index].reshape(1, -1)
-prediction_prob = best_gbc.predict_proba(row)
-print(f"Prediction probabilities for row {row_index}: {prediction_prob}")
+

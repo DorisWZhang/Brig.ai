@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 import pickle
 import pandas as pd
+import numpy as np
 
 app = Flask(__name__)
 
@@ -54,13 +55,19 @@ def predictPCOScluster():
             # Standardize the features
             df_scaled = scaler.transform(df)
 
+            # Print the scaled data for debugging
+            print("Scaled data:", df_scaled)  # Debug print
+
             # Predict cluster using the kmeans model
             cluster_predictions = kmeans.predict(df_scaled)
             print("Cluster predictions:", cluster_predictions)  # Debug print
 
-            # Convert predictions to a list
-            cluster_predictions_list = cluster_predictions.tolist()
-            return jsonify({'cluster_predictions': cluster_predictions_list})
+            # Calculate percentage of each cluster
+            unique_clusters, cluster_counts = np.unique(cluster_predictions, return_counts=True)
+            total_samples = len(cluster_predictions)
+            cluster_percentages = {str(cluster): count / total_samples for cluster, count in zip(unique_clusters, cluster_counts)}
+
+            return jsonify({'cluster_percentages': cluster_percentages})
         else:
             return jsonify({'error': 'Input data should be a list of dictionaries'}), 400
     except Exception as e:

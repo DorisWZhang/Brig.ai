@@ -7,7 +7,7 @@ from sklearn import metrics
 import pickle
 
 # Load the CSV file into a DataFrame
-file_path = '/home/laurenyip/AI4GOODLAB/AI4GOOD_projects/Project/ai4good/backend/PCOS_data.csv'
+file_path = 'PCOS_data.csv'
 df = pd.read_csv(file_path)
 print("DataFrame loaded successfully.")
 
@@ -19,7 +19,7 @@ label_pcos = df["PCOS (Y/N)"]
 
 # Drop unnecessary columns if they exist
 columns_to_drop = [
-    "Sl. No", "Patient File No.", "PCOS (Y/N)", "Unnamed: 44", "II    beta-HCG(mIU/mL)", 
+    "Sl. No", "Patient File No.", "Blood Group", "BMI", "PCOS (Y/N)", "Unnamed: 44", "II    beta-HCG(mIU/mL)", 
     "AMH(ng/mL)", "Endometrium (mm)", "Avg. F size (R) (mm)", "Avg. F size (L) (mm)", 
     "Follicle No. (R)", "Follicle No. (L)", "RBS(mg/dl)", "PRG(ng/mL)", "Vit D3 (ng/mL)", 
     "PRL(ng/mL)", "AMH(ng/mL)", "TSH (mIU/L)", "FSH/LH", "LH(mIU/mL)", "FSH(mIU/mL)", 
