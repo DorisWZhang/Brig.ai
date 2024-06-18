@@ -1,29 +1,35 @@
-import React from 'react'
-import "../styles/Symptom.css"
-import { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react';
+import "../styles/Symptom.css";
 
-
-function Symptom({symptom}) {
-
-const [isSelected, setIsSelected] = useState(false);
+function Symptom({ symptom, innerRef }) {
+  const [isSelected, setIsSelected] = useState(false);
 
   // Step 2: Handle button click
   const handleButtonClick = () => {
     setIsSelected(prevState => !prevState);
   };
 
+  useEffect(() => {
+    if (innerRef) {
+      innerRef.current = { element: ref.current, isSelected };
+    }
+  }, [isSelected, innerRef]);
+
+  const ref = useRef();
+
   return (
     <div>
-         <button 
-        className={`symptom-button ${isSelected ? 'selected' : ''}`} 
+      <button
+        ref={ref}
+        className={`symptom-button ${isSelected ? 'selected' : ''}`}
         onClick={handleButtonClick}
       >
-        <span className='symptom'> 
+        <span className='symptom'>
           {symptom}
         </span>
-    </button>
+      </button>
     </div>
-  )
+  );
 }
 
-export default Symptom
+export default Symptom;

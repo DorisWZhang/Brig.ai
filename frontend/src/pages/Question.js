@@ -1,22 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import "../styles/Question.css";
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { QuestionList } from '../helpers/Questionnaire';
 import Symptom from "../components/Symptom";
 
-function Question({}) {
-
+function Question() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const navigate = useNavigate();
-  const question = QuestionList[currentQuestionIndex];
+  const question = QuestionList[currentQuestionIndex]; /* the question on page */
+
+  const buttonsRef = useRef(question.symptoms.map(() => React.createRef()));
 
   const saveSymptoms = () => {
-    const symptom = {}
-    const questionSymptoms = question.symptoms[currentQuestionIndex]
-    if (questionSymptoms) {
-      for (let i = 0; i < questionSymptoms.length; i++) {
-        symptom[questionSymptoms[i].textContent] = questionSymptoms[i].isSelected
-      };
+    const symptom = {};
+    for (let i = 0; i < question.symptoms.length; i++) {
+      const buttonRef = buttonsRef.current[i].current;
+      if (buttonRef) {
+        const { element, isSelected } = buttonRef;
+        symptom[element.textContent] = isSelected;
+      }
     }
 
     fetch('http://127.0.0.1:5000/update', {
@@ -37,8 +39,8 @@ function Question({}) {
 
   const handleContinueClick = () => {
     if (currentQuestionIndex < QuestionList.length - 1) {
+      saveSymptoms();
       setCurrentQuestionIndex(currentQuestionIndex + 1);
-      saveSymptoms()
     } else {
       navigate('/results', { state: { questionList: QuestionList } });
     }
@@ -52,6 +54,10 @@ function Question({}) {
     }
   };
 
+  useEffect(() => {
+    buttonsRef.current = question.symptoms.map(() => React.createRef());
+  }, [currentQuestionIndex]);
+
   return (
     <div className='question-screen'>
       <div className='frame'>
@@ -62,13 +68,21 @@ function Question({}) {
           </span>
           <div className='symp-1'>
             {question.symptoms.slice(0, 5).map((symptom, index) => (
-              <Symptom key={index} symptom={symptom} />
+              <Symptom
+                key={index}
+                symptom={symptom}
+                innerRef={buttonsRef.current[index]}
+              />
             ))}
           </div>
           {question.symptoms.length > 5 && (
             <div style={{ display: 'flex' }} className='symp-2'>
               {question.symptoms.slice(5).map((symptom, index) => (
-                <Symptom key={index} symptom={symptom} />
+                <Symptom
+                  key={index + 5}
+                  symptom={symptom}
+                  innerRef={buttonsRef.current[index + 5]}
+                />
               ))}
             </div>
           )}
