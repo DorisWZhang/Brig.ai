@@ -1,9 +1,9 @@
 :root {
     --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
-      "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
-      "Source Han Sans CN", sans-serif;
-  }
+        Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
+        "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
+        "Source Han Sans CN", sans-serif;
+}
 
 .q-button {
     background: #ffffff;
@@ -24,10 +24,3 @@
     font-size: 15px;
     padding: 15px;
 }
-@font-face {
-    font-family: 'Inter';
-    src: url('C:\Projects\ai4good\frontend\src\assets\fonts\Inter\Inter-VariableFont_slnt,wght.ttf') format('truetype');
-}
-
-
-
