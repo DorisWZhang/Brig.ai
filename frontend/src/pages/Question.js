@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import "../styles/Question.css";
 import { useNavigate } from 'react-router-dom';
 import { QuestionList } from '../helpers/Questionnaire';
@@ -9,43 +9,57 @@ function Question() {
   const navigate = useNavigate();
   const question = QuestionList[currentQuestionIndex]; /* the question on page */
 
-  const buttonsRef = useRef(question.symptoms.map(() => React.createRef()));
+  // State to track selected symptoms across all pages
+  const [selectedSymptoms, setSelectedSymptoms] = useState({});
 
+  // State to track selected symptoms for the current page only
+  const [currentPageSymptoms, setCurrentPageSymptoms] = useState({});
+
+  // Update selected symptoms for current page
+  const updateSelectedSymptoms = (symptom, isSelected) => {
+    setCurrentPageSymptoms(prevState => ({
+      ...prevState,
+      [symptom]: isSelected ? 1 : 0 // Convert true/false to 1/0
+    }));
+  };
+
+  // Reset current page symptoms to empty
+  const resetCurrentPageSymptoms = () => {
+    setCurrentPageSymptoms({});
+  };
+
+  // Save symptoms to server
   const saveSymptoms = () => {
-    const symptom = {};
-    for (let i = 0; i < question.symptoms.length; i++) {
-      const buttonRef = buttonsRef.current[i].current;
-      if (buttonRef) {
-        const { element, isSelected } = buttonRef;
-        symptom[element.textContent] = isSelected;
-      }
-    }
-
     fetch('http://127.0.0.1:5000/update', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(symptom)
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(currentPageSymptoms)
     })
     .then(response => response.json())
     .then(data => {
-        console.log('Success:', data);
+      console.log('Success:', data);
     })
     .catch((error) => {
-        console.error('Error:', error);
+      console.error('Error:', error);
     });
   };
 
+  // Handle click to continue to next question or view results
   const handleContinueClick = () => {
+    saveSymptoms(); // Save current page symptoms
+    resetCurrentPageSymptoms(); // Reset current page symptoms
+
+    // Navigate to the next question or results page
     if (currentQuestionIndex < QuestionList.length - 1) {
-      saveSymptoms();
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
       navigate('/results', { state: { questionList: QuestionList } });
     }
   };
 
+  // Handle click to go back to previous question
   const handleBackClick = () => {
     if (currentQuestionIndex === 0) {
       navigate('/');
@@ -55,8 +69,12 @@ function Question() {
   };
 
   useEffect(() => {
-    buttonsRef.current = question.symptoms.map(() => React.createRef());
-  }, [currentQuestionIndex]);
+    // Merge currentPageSymptoms into selectedSymptoms after each update
+    setSelectedSymptoms(prevState => ({
+      ...prevState,
+      ...currentPageSymptoms
+    }));
+  }, [currentPageSymptoms]);
 
   return (
     <div className='question-screen'>
@@ -71,7 +89,8 @@ function Question() {
               <Symptom
                 key={index}
                 symptom={symptom}
-                innerRef={buttonsRef.current[index]}
+                isSelected={currentPageSymptoms[symptom] === 1}
+                updateSelected={updateSelectedSymptoms}
               />
             ))}
           </div>
@@ -81,7 +100,8 @@ function Question() {
                 <Symptom
                   key={index + 5}
                   symptom={symptom}
-                  innerRef={buttonsRef.current[index + 5]}
+                  isSelected={currentPageSymptoms[symptom] === 1}
+                  updateSelected={updateSelectedSymptoms}
                 />
               ))}
             </div>

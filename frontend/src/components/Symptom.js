@@ -1,26 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import "../styles/Symptom.css";
 
-function Symptom({ symptom, innerRef }) {
-  const [isSelected, setIsSelected] = useState(false);
-
-  // Step 2: Handle button click
+const Symptom = ({ symptom, isSelected, updateSelected }) => {
   const handleButtonClick = () => {
-    setIsSelected(prevState => !prevState);
+    const newSelected = !isSelected;
+    updateSelected(symptom, newSelected);
   };
-
-  useEffect(() => {
-    if (innerRef) {
-      innerRef.current = { element: ref.current, isSelected };
-    }
-  }, [isSelected, innerRef]);
-
-  const ref = useRef();
 
   return (
     <div>
       <button
-        ref={ref}
+        id={symptom} // Set the id to the symptom text
         className={`symptom-button ${isSelected ? 'selected' : ''}`}
         onClick={handleButtonClick}
       >
@@ -30,6 +20,6 @@ function Symptom({ symptom, innerRef }) {
       </button>
     </div>
   );
-}
+};
 
 export default Symptom;
