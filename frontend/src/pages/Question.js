@@ -37,13 +37,13 @@ function Question() {
       },
       body: JSON.stringify(currentPageSymptoms)
     })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Success:', data);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   };
 
   // Handle click to continue to next question or view results
@@ -55,7 +55,7 @@ function Question() {
     if (currentQuestionIndex < QuestionList.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
-      navigate('/results', { state: { questionList: QuestionList } });
+      navigate('/fillq');
     }
   };
 
@@ -109,7 +109,7 @@ function Question() {
         </div>
         <div className='button-frame'>
           <button className='continue-button' onClick={handleContinueClick}>
-            {currentQuestionIndex < QuestionList.length - 1 ? 'Continue' : 'View your Results'}
+            {'Continue'}
           </button>
         </div>
       </div>
