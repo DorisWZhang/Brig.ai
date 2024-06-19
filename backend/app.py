@@ -28,66 +28,11 @@ severity_model = pickle.load(open(MODEL_PATH, 'rb'))
 MODEL_PATH = os.path.join(APP_ROOT, "./models/endo_LR_cluster.pkl")
 cluster_model = pickle.load(open(MODEL_PATH, 'rb'))
 
-ENDO_CLUSTER_JSON = {
-    "Menstrual pain (Dysmenorrhea)": None,
-    "Painful / Burning pain during sex (Dyspareunia)": None,
-    "Irregular / Missed period": None,
-    "Cramping": None,
-    "Abdominal pain / pressure": None,
-    "Painful bowel movements": None,
-    "Infertility": None,
-    "Painful cramps during period": None,
-    "Constipation / Chronic constipation": None,
-    "Vomiting / constant vomiting": None,
-    "Fatigue / Chronic fatigue": None,
-    "Painful ovulation": None,
-    "Extreme / Severe pain": None,
-    "Bleeding": None,
-    "Fertility Issues": None,
-    "Ovarian cysts": None,
-    "Constant bleeding": None,
-    "IBS-like symptoms": None,
-    "Vaginal Pain/Pressure": None,
-    "Bowel pain": None,
-    "Cysts (unspecified)": None,
-    "Malaise / Sickness": None,
-    "Abnormal uterine bleeding": None,
-    "Fever": None,
-    "Hormonal problems": None,
-    "Bloating": None,
-    "Feeling sick": None,
-    "Loss of appetite": None,
-}
+ENDO_CLUSTER_JSON = {"Menstrual pain (Dysmenorrhea)": 0.0, "Painful / Burning pain during sex (Dyspareunia)": 0.0, "Pelvic pain": 0.0, "Irregular / Missed periods": 0.0, "Cramping": 0.0, "Abdominal pain / pressure": 0.0, "Painful bowel movements": 0.0, "Infertility": 0.0, "Painful cramps during period": 0.0, "Constipation / Chronic constipation": 0.0, "Vomiting / constant vomiting": 0.0, "Fatigue / Chronic fatigue": 0.0, "Painful ovulation": 0.0,
+                     "Extreme / Severe pain": 0.0, "Bleeding": 0.0, "Fertility Issues": 0.0, "Ovarian cysts": 0.0, "Constant bleeding": 0.0, "IBS-like symptoms": 0.0, "Vaginal Pain/Pressure": 0.0, "Bowel pain": 0.0, "Cysts (unspecified)": 0.0, "Malaise / Sickness": 0.0, "Abnormal uterine bleeding": 0.0, "Fever": 0.0, "Hormonal problems": 0.0, "Bloating": 0.0, "Feeling sick": 0.0, "Loss of appetite": 0.0, "Diagnosed with Endometriosis": 0.0}
 
-ENDO_PREDICT_JSON = {
-    "Lower back pain": None,
-    "Fever": None,
-    "Cysts (unspecified)": None,
-    "Bowel pain": None,
-    "Fatigue / Chronic fatigue": None,
-    "Irregular / Missed periods": None,
-    "Painful / Burning pain during sex (Dyspareunia)": None,
-    "Painful ovulation": None,
-    "Menstrual pain (Dysmenorrhea)": None,
-    "Fertility Issues": None,
-    "Loss of appetite": None,
-    "Malaise / Sickness": None,
-    "Hormonal problems": None,
-    "Bloating": None,
-    "Headaches": None,
-    "Extreme / Severe pain": None,
-    "Ovarian cysts": None,
-    "Vomiting / constant vomiting": None,
-    "Bleeding": None,
-    "Painful bowel movements": None,
-    "Constant bleeding": None,
-    "Painful cramps during period": None,
-    "Infertility": None,
-    "IBS-like symptoms": None,
-    "Pelvic pain": None,
-    "Abnormal uterine bleeding": None,
-    "Constipation / Chronic constipation": None
-}
+ENDO_PREDICT_JSON = {"Menstrual pain (Dysmenorrhea)": 0, "Painful / Burning pain during sex (Dyspareunia)": 0, "Pelvic pain": 0, "Irregular / Missed periods": 0, "Painful bowel movements": 0, "Infertility": 0, "Painful cramps during period": 0, "Constipation / Chronic constipation": 0, "Vomiting / constant vomiting": 0, "Fatigue / Chronic fatigue": 0, "Painful ovulation": 0,
+                     "Extreme / Severe pain": 0, "Bleeding": 0, "Lower back pain": 0, "Fertility Issues": 0, "Ovarian cysts": 0, "Headaches": 0, "Constant bleeding": 0, "IBS-like symptoms": 0, "Bowel pain": 0, "Cysts (unspecified)": 0, "Malaise / Sickness": 0, "Abnormal uterine bleeding": 0, "Fever": 0, "Hormonal problems": 0, "Bloating": 0, "Loss of appetite": 0}
 
 PCOS_PREDICT_JSON = {
     "Age (yrs)": None,
@@ -116,7 +61,7 @@ PCOS_PREDICT_JSON = {
 
 ENDO_PREDICT_JSON_NULL = ENDO_PREDICT_JSON.copy()
 ENDO_CLUSTER_JSON_NULL = ENDO_CLUSTER_JSON.copy()
-PCOS_PREDICT_JSON = PCOS_PREDICT_JSON.copy()
+PCOS_PREDICT_JSON_NULL = PCOS_PREDICT_JSON.copy()
 
 
 @app.route('/update', methods=['POST'])
@@ -131,11 +76,57 @@ def update():
             ENDO_CLUSTER_JSON[key] = input_data[key]
         if key in ENDO_PREDICT_JSON:
             ENDO_PREDICT_JSON[key] = input_data[key]
+        if key in PCOS_PREDICT_JSON:
+            PCOS_PREDICT_JSON[key] = input_data[key]
     response_data = {'Updated cluster json': ENDO_CLUSTER_JSON,
-                     'Updated predict json': ENDO_PREDICT_JSON}
+                     'Updated predict json': ENDO_PREDICT_JSON,
+                     'Updated pcos json': PCOS_PREDICT_JSON}
 
     print(json.dumps(response_data, indent=2))
     return jsonify(response_data)
+
+
+@app.route('/submit', methods=['POST'])
+def submit_final():
+    global ENDO_CLUSTER_JSON, ENDO_PREDICT_JSON, PCOS_PREDICT_JSON
+    input_data = request.get_json()  # Get the JSON data from the request
+
+    for key in input_data:
+        if key in ENDO_CLUSTER_JSON:
+            ENDO_CLUSTER_JSON[key] = input_data[key]
+        if key in ENDO_PREDICT_JSON:
+            ENDO_PREDICT_JSON[key] = input_data[key]
+        if key in PCOS_PREDICT_JSON:
+            PCOS_PREDICT_JSON[key] = input_data[key]
+
+    response_data = {'Updated cluster json': ENDO_CLUSTER_JSON,
+                     'Updated predict json': ENDO_PREDICT_JSON,
+                     'Updated pcos json': PCOS_PREDICT_JSON}
+
+    print(json.dumps(response_data, indent=2))
+
+    # getting values relevant to making endo prediction
+    features = [int(x) for x in ENDO_PREDICT_JSON.values()]
+    df = pd.DataFrame([features], columns=ENDO_PREDICT_JSON.keys())
+    severity_prediction = severity_model.predict_proba(df)
+    endo_severity_prediction = severity_prediction[0][1]
+    ENDO_PREDICT_JSON = ENDO_PREDICT_JSON_NULL
+
+    # endo cluster
+    features = [[int(x) for x in ENDO_CLUSTER_JSON.values()]]
+    cluster = cluster_model.predict_proba(features)
+    endo_cluster = int(numpy.argmax(cluster[0]))
+    ENDO_CLUSTER_JSON = ENDO_CLUSTER_JSON_NULL
+
+    pcos_severity_prediction = None
+    pcos_cluster = None
+
+    # pcos prediction
+
+    # pcos cluster
+
+    return jsonify({'endo_severity': endo_severity_prediction, 'endo_cluster': endo_cluster,
+                    'pcos_severity': pcos_severity_prediction, 'pcos_cluster': pcos_cluster})
 
 
 @app.route('/endoseverity', methods=['POST'])
