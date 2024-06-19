@@ -58,7 +58,8 @@ export const QuestionList = [
         { id: "Weight gain(Y/N)", text: "Weight gain" },
         { id: "Skin darkening (Y/N)", text: "Skin darkening" },
         { id: "Hair loss(Y/N)", text: "Hair loss" },
-        { id: "Pimples(Y/N)", text: "Pimples" }
+        { id: "Pimples(Y/N)", text: "Pimples" },
+        { id: "hair growth(Y/N)", text: "Excess Hair Growth"}
       ]
     },
     {

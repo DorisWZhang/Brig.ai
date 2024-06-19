@@ -4,6 +4,7 @@ import Question from './pages/Question';
 import Results from './pages/Results'
 import Landing from "./pages/Landing"
 import FillQuestion from "./pages/FillQuestion"
+import LocatePainQuestion from "./pages/LocatePainQuestion"
 
 
 
@@ -16,6 +17,7 @@ function App() {
           <Route path="/questionnaire" element={<Question />}></Route>
           <Route path="/results" element={<Results />}></Route>
           <Route path="/fillq" element={<FillQuestion />}></Route>
+          <Route path='/locatepainq' element={<LocatePainQuestion/>}></Route>
         </Routes>
       </Router>
     </div>

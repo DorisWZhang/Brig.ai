@@ -45,8 +45,7 @@ export default function Results() {
           <Chatbot />
         </div>
         <div className='note'>
-          All recommended diagnosis tools must be administered and discussed with a licensed medical professional. 
-        </div>
+        All recommended diagnosis tools must be administered and discussed with a licensed medical professional. Brig.ai can make mistakes. </div>
       </div>
     </div>
   );

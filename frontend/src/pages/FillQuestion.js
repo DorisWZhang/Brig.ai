@@ -206,16 +206,6 @@ function FillQuestion() {
                             />
                         </div>
 
-                        <div className='input-group'>
-                            <label htmlFor='weightGain'>Weight gain (Y/N):</label>
-                            <input
-                                type='number'
-                                id='weightGain'
-                                value={formData.weightGain}
-                                onChange={handleInputChange}
-                                placeholder='Enter 1 (Yes) or 0 (No)'
-                            />
-                        </div>
 
                         <div className='input-group'>
                             <label htmlFor='hairGrowth'>Hair growth (Y/N):</label>
@@ -227,64 +217,6 @@ function FillQuestion() {
                                 placeholder='Enter 1 (Yes) or 0 (No)'
                             />
                         </div>
-
-
-                        <div className='input-group'>
-                            <label htmlFor='skinDarkening'>Skin darkening (Y/N):</label>
-                            <input
-                                type='number'
-                                id='skinDarkening'
-                                value={formData.skinDarkening}
-                                onChange={handleInputChange}
-                                placeholder='Enter 1 (Yes) or 0 (No)'
-                            />
-                        </div>
-                    </div>
-                    <div className='row-5'>
-                        <div className='input-group'>
-                            <label htmlFor='hairLoss'>Hair loss (Y/N):</label>
-                            <input
-                                type='text'
-                                id='hairLoss'
-                                value={formData.hairLoss}
-                                onChange={handleInputChange}
-                                placeholder='Enter Y or N'
-                            />
-                        </div>
-                        <div className='input-group'>
-                            <label htmlFor='pimples'>Pimples (Y/N):</label>
-                            <input
-                                type='number'
-                                id='pimples'
-                                value={formData.pimples}
-                                onChange={handleInputChange}
-                                placeholder='Enter 1 (Yes) or 0 (No)'
-                            />
-                        </div>
-                        <div className='input-group'>
-                            <label htmlFor='fastFood'>Fast food (Y/N):</label>
-                            <input
-                                type='number'
-                                id='fastFood'
-                                value={formData.fastFood}
-                                onChange={handleInputChange}
-                                placeholder='Enter 1 (Yes) or 0 (No)'
-                            />
-                        </div>
-
-                        <div className='input-group'>
-                            <label htmlFor='regExercise'>Regular Exercise (Y/N):</label>
-                            <input
-                                type='number'
-                                id='regExercise'
-                                value={formData.regExercise}
-                                onChange={handleInputChange}
-                                placeholder='Enter 1 (Yes) or 0 (No)'
-                            />
-                        </div>
-                    </div>
-                    <div className='row-6'>
-
                         <div className='input-group'>
                             <label htmlFor='systolicBP'>Systolic Blood Pressure (mmHg):</label>
                             <input
@@ -294,7 +226,7 @@ function FillQuestion() {
                                 onChange={handleInputChange}
                                 placeholder='Enter your systolic BP in mmHg'
                             />
-                        </div>
+                        </div>  
                         <div className='input-group'>
                             <label htmlFor='diastolicBP'>Diastolic Blood Pressure (mmHg):</label>
                             <input
@@ -305,7 +237,9 @@ function FillQuestion() {
                                 placeholder='Enter your diastolic BP in mmHg'
                             />
                         </div>
+
                     </div>
+                    
                 </div>
                 <div className='button-frame'>
                     <button className='continue-button' onClick={handleContinueClick}>
