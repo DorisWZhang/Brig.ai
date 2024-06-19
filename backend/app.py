@@ -4,7 +4,7 @@ import pandas as pd
 
 from flask_cors import CORS
 import os
-import numpy
+import numpy as np
 import json
 
 app = Flask(__name__)
@@ -99,34 +99,37 @@ def submit_final():
         if key in PCOS_PREDICT_JSON:
             PCOS_PREDICT_JSON[key] = input_data[key]
 
-    response_data = {'Updated cluster json': ENDO_CLUSTER_JSON,
-                     'Updated predict json': ENDO_PREDICT_JSON,
-                     'Updated pcos json': PCOS_PREDICT_JSON}
-
-    print(json.dumps(response_data, indent=2))
+    response_data = {'Updated cluster json': ENDO_CLUSTER_JSON.copy(),
+                     'Updated predict json': ENDO_PREDICT_JSON.copy(),
+                     'Updated pcos json': PCOS_PREDICT_JSON.copy()}
 
     # getting values relevant to making endo prediction
-    features = [int(x) for x in ENDO_PREDICT_JSON.values()]
-    df = pd.DataFrame([features], columns=ENDO_PREDICT_JSON.keys())
-    severity_prediction = severity_model.predict_proba(df)
-    endo_severity_prediction = severity_prediction[0][1]
-    ENDO_PREDICT_JSON = ENDO_PREDICT_JSON_NULL
+    endo_predict_features = [int(x) if x is not None else 0 for x in ENDO_PREDICT_JSON.values()]
+    endo_predict_df = pd.DataFrame([endo_predict_features], columns=ENDO_PREDICT_JSON.keys())
+    endo_severity_prediction = severity_model.predict_proba(endo_predict_df)[0][1]
+    ENDO_PREDICT_JSON = ENDO_PREDICT_JSON_NULL.copy()
 
-    # endo cluster
-    features = [[int(x) for x in ENDO_CLUSTER_JSON.values()]]
-    cluster = cluster_model.predict_proba(features)
-    endo_cluster = int(numpy.argmax(cluster[0]))
-    ENDO_CLUSTER_JSON = ENDO_CLUSTER_JSON_NULL
-
-    pcos_severity_prediction = None
-    pcos_cluster = None
+    # endo cluster prediction
+    endo_cluster_features = [[int(x) if x is not None else 0 for x in ENDO_CLUSTER_JSON.values()]]
+    endo_cluster_prediction = int(np.argmax(cluster_model.predict_proba(endo_cluster_features)[0]))
+    ENDO_CLUSTER_JSON = ENDO_CLUSTER_JSON_NULL.copy()
 
     # pcos prediction
+    pcos_predict_features = [int(x) if x is not None else 0 for x in PCOS_PREDICT_JSON.values()]
+    pcos_predict_df = pd.DataFrame([pcos_predict_features], columns=PCOS_PREDICT_JSON.keys())
+    pcos_predict_df.columns = pcos_predict_df.columns.str.strip()
+    pcos_predict_df_scaled = scaler.transform(pcos_predict_df)
+    pcos_severity_prediction = clf.predict_proba(pcos_predict_df_scaled)[0].tolist()
 
-    # pcos cluster
+    # pcos cluster prediction
+    pcos_cluster_predictions = kmeans.predict(pcos_predict_df_scaled).tolist()
 
-    return jsonify({'endo_severity': endo_severity_prediction, 'endo_cluster': endo_cluster,
-                    'pcos_severity': pcos_severity_prediction, 'pcos_cluster': pcos_cluster})
+    return jsonify({'endo_severity': endo_severity_prediction,
+                    'endo_cluster': endo_cluster_prediction,
+                    'pcos_severity': pcos_severity_prediction[0],
+                    'pcos_cluster': pcos_cluster_predictions[0]})
+
+
 
 
 @app.route('/endoseverity', methods=['POST'])
@@ -145,7 +148,7 @@ def endo_cluster():
     data = request.get_json()  # Get the JSON data from the request
     features = [[int(x) for x in data.values()]]
     cluster = cluster_model.predict_proba(features)
-    cluster = int(numpy.argmax(cluster[0]))
+    cluster = int(np.argmax(cluster[0]))
 
     ENDO_CLUSTER_JSON = ENDO_CLUSTER_JSON_NULL
     return jsonify({'cluster': cluster, 'updated cluster json': ENDO_CLUSTER_JSON})
