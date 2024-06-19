@@ -114,3 +114,7 @@ button {
   font-size: 20px;
   line-height: 16px;
 }
+.continue-button:hover {
+  transition: 0.3s;
+  background-color: black;
+}

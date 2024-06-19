@@ -13,7 +13,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Landing />}></Route>
-          <Route path="/q/:id" element={<Question />}></Route>
+          <Route path="/questionnaire" element={<Question />}></Route>
           <Route path="/results" element={<Results />}></Route>
           <Route path="/fillq" element={<FillQuestion />}></Route>
         </Routes>
