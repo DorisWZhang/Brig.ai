@@ -48,6 +48,7 @@ function LocatePainQuestion() {
         <div className='question-screen'>
             <div className='frame'>
                 <button className='back' onClick={handleBackClick}>Back</button>
+                <div className='locate-pain'> Please specify the location of pain. </div>
                 <div className='image'>
                     <img src={Body} className='body'/>
                 </div>
