@@ -17,13 +17,7 @@ function FillQuestion() {
         "Hip(inch)": 0,
         "Waist(inch)": 0,
         "Waist:Hip Ratio": 0,
-        "Weight gain(Y/N)": 0,
         "hair growth(Y/N)": 0,
-        "Skin darkening (Y/N)": 0,
-        "Hair loss(Y/N)": 0,
-        "Pimples(Y/N)": 0,
-        "Fast food (Y/N)": 0,
-        "Reg.Exercise(Y/N)": 0,
         "BP _Systolic (mmHg)": 0,
         "BP _Diastolic (mmHg)": 0,
     });
