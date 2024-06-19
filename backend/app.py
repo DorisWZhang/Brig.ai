@@ -127,7 +127,7 @@ def submit_final():
     pcos_predict_df.columns = pcos_predict_df.columns.str.strip()
     pcos_predict_df_scaled = scaler.transform(pcos_predict_df)
     pcos_severity_prediction = clf.predict_proba(
-        pcos_predict_df_scaled)[0].tolist()
+        pcos_predict_df_scaled)[1].tolist()
 
     # pcos cluster prediction
     pcos_cluster_predictions = kmeans.predict(pcos_predict_df_scaled).tolist()
