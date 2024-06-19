@@ -20,7 +20,7 @@
 }
 
 .gen-q {
-    font-family: 'Inter';
+    font-family: Inter, var(--default-font-family);
     font-size: 15px;
     padding: 15px;
 }
