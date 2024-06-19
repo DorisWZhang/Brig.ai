@@ -16,10 +16,10 @@ function Question() {
   const [currentPageSymptoms, setCurrentPageSymptoms] = useState({});
 
   // Update selected symptoms for current page
-  const updateSelectedSymptoms = (symptom, isSelected) => {
+  const updateSelectedSymptoms = (symptomId, isSelected) => {
     setCurrentPageSymptoms(prevState => ({
       ...prevState,
-      [symptom]: isSelected ? 1 : 0 // Convert true/false to 1/0
+      [symptomId]: isSelected ? 1 : 0 // Convert true/false to 1/0
     }));
   };
 
@@ -89,7 +89,7 @@ function Question() {
               <Symptom
                 key={index}
                 symptom={symptom}
-                isSelected={currentPageSymptoms[symptom] === 1}
+                isSelected={currentPageSymptoms[symptom.id] === 1}
                 updateSelected={updateSelectedSymptoms}
               />
             ))}
@@ -100,7 +100,7 @@ function Question() {
                 <Symptom
                   key={index + 5}
                   symptom={symptom}
-                  isSelected={currentPageSymptoms[symptom] === 1}
+                  isSelected={currentPageSymptoms[symptom.id] === 1}
                   updateSelected={updateSelectedSymptoms}
                 />
               ))}

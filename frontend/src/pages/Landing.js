@@ -1,10 +1,13 @@
 import React from 'react'
 import "../styles/Landing.css"
+import Logo from "../assets/photos/logo.png"
 
 function Landing() {
   return (
     <div className='landing'>
       <div className='proj-title'>
+        
+        <img src={Logo} className='logo'/>
         Brig.ai
       </div>
       <div className='through-line'>
