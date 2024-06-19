@@ -1,6 +1,7 @@
 .message-novi {
     height: 55px;
-    font: 15px "Inter";
+    font-family: Inter, var(--default-font-family);
+    font-size: 15px;
     background-color: #EAECEE;
     border: none;
     border-radius: 300px;

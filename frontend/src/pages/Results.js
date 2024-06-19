@@ -16,7 +16,7 @@ export default function Results() {
   const handleBackClick = () => {
     if (questionList.length > 0) {
       const lastQuestionIndex = questionList.length - 1;
-      navigate(`/q/${lastQuestionIndex}`); // Navigate to the last question index
+      navigate(`/questionnaire`); // Navigate to the last question index
     } else {
       navigate('/'); // Default navigation if no questionList is found (safety fallback)
     }

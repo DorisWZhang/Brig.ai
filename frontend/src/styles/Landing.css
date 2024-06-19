@@ -1,0 +1,40 @@
+.landing {
+    position: absolute;
+    margin-left:250px;
+    margin-top:150px;
+
+}
+
+.proj-title {
+    font-family: Inter, var(--default-font-family);
+    font-size: 45px;
+    color:#242d35;
+    font-weight: 500;
+}
+.through-line {
+    width:70%;
+    margin-left:5px;
+    margin-top: 30px;
+    font-family: Inter, var(--default-font-family);
+    font-size: 23px;
+    color:#242d35;
+    font-weight: 300;
+}
+.start-button {
+    margin-top: 30px;
+    font-family: Inter, var(--default-font-family);
+    font-size: 25px;
+    cursor: pointer;
+    background: #242d35;
+    color: #ffffff;
+    border: none;
+    border-radius: 52px;
+    width: 220px;
+    height: 50px;
+
+}
+.start-button:hover {
+    transition-duration: 0.3s;
+    background: black;
+}
+
