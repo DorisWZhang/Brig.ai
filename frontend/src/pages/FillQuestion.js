@@ -36,6 +36,7 @@ function FillQuestion() {
 
     const handleContinueClick = () => {
         // Handle continue button click
+        navigate('/results')
         console.log(formData);
         // You can add your logic here, e.g., navigating to another page
         fetch('http://127.0.0.1:5000/submit', {
