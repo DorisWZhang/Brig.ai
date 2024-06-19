@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "../styles/Question.css";
+import "../styles/FillQuestion.css";
 import { useNavigate } from 'react-router-dom';
 
 function FillQuestion() {
@@ -36,7 +36,8 @@ function FillQuestion() {
         <div className='question-screen'>
             <div className='frame'>
                 <button className='back' onClick={handleBackClick}>Back</button>
-                <div className='frame-4'>
+                <div className='input-groups'>
+                    <div className='row-1'> 
                     <div className='input-group'>
                         <label htmlFor='age'>Age:</label>
                         <input
@@ -77,6 +78,8 @@ function FillQuestion() {
                             placeholder='Enter your diastolic BP in mmHg'
                         />
                     </div>
+                    </div>
+                    <div className='row-2'>
                     <div className='input-group'>
                         <label htmlFor='bloodType'>Blood Type:</label>
                         <input
@@ -87,6 +90,8 @@ function FillQuestion() {
                             placeholder='Enter your blood type'
                         />
                     </div>
+                    
+                    
                     <div className='input-group'>
                         <label htmlFor='pulse'>Pulse (bpm):</label>
                         <input
@@ -107,25 +112,30 @@ function FillQuestion() {
                             placeholder='Enter your respiratory rate in breaths/min'
                         />
                     </div>
-                    <div className='input-group'>
-                        <label htmlFor='periodCycleLength'>Period Cycle Length (days):</label>
-                        <input
-                            type='number'
-                            id='periodCycleLength'
-                            value={formData.periodCycleLength}
-                            onChange={handleInputChange}
-                            placeholder='Enter your period cycle length in days'
-                        />
-                    </div>
-                    <div className='input-group'>
-                        <label htmlFor='numberOfAbortions'>Number of Abortions:</label>
-                        <input
-                            type='number'
-                            id='numberOfAbortions'
-                            value={formData.numberOfAbortions}
-                            onChange={handleInputChange}
-                            placeholder='Enter the number of abortions'
-                        />
+                    
+                    
+                        <div className='input-group'>
+                            <label htmlFor='periodCycleLength'>Period Cycle Length (days):</label>
+                            <input
+                                type='number'
+                                id='periodCycleLength'
+                                value={formData.periodCycleLength}
+                                onChange={handleInputChange}
+                                placeholder='Enter your period cycle length in days'
+                            />
+                        </div>
+                        </div>
+                        <div className='row-3'>
+                        <div className='input-group'>
+                            <label htmlFor='numberOfAbortions'>Number of Abortions:</label>
+                            <input
+                                type='number'
+                                id='numberOfAbortions'
+                                value={formData.numberOfAbortions}
+                                onChange={handleInputChange}
+                                placeholder='Enter the number of abortions'
+                            />
+                        </div>
                     </div>
                 </div>
                 <div className='button-frame'>
