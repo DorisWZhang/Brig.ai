@@ -4,7 +4,7 @@ import "../styles/Chatbot.css"
 function Chatbot() {
   return (
     <div>
-        <input className='message-novi' placeholder='Message Novi'></input>
+        <input className='message-brig' placeholder='Message Brig.ai'></input>
     </div>
   )
 }
