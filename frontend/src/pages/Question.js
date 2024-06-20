@@ -55,7 +55,7 @@ function Question() {
     if (currentQuestionIndex < QuestionList.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
-      navigate('/fillq');
+      navigate('/painq');
     }
   };
 

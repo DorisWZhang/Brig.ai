@@ -36,7 +36,7 @@ function LocatePainQuestion() {
         .then(response => response.json())
         .then(data => {
             console.log('Success:', data);
-            navigate('/results', { state: { data } });
+            navigate('/fillq', { state: { data } });
         })
         .catch((error) => {
             console.error('Error:', error);
@@ -45,7 +45,7 @@ function LocatePainQuestion() {
 
     const handleBackClick = () => {
         navigate("/");
-    }
+    };
 
     return (
         <div className='question-screen'>

@@ -17,6 +17,7 @@ function PainQuestion() {
             [question]: prevState[question] === answer ? '' : answer
         }));
     };
+
     const handleContinueClick = () => {
         console.log(formData);
         fetch('http://127.0.0.1:5000/submit', {
@@ -29,7 +30,7 @@ function PainQuestion() {
         .then(response => response.json())
         .then(data => {
             console.log('Success:', data);
-            navigate('/results', { state: { data } });
+            navigate('/locatepainq', { state: { data } });
         })
         .catch((error) => {
             console.error('Error:', error);
@@ -45,7 +46,7 @@ function PainQuestion() {
             <div className='frame'>
                 <button className='back' onClick={handleBackClick}>Back</button>
                 <div className='row1'>
-                    <div>Have you recently experienced physical pain?</div>
+                    <div>Have you recently experienced any physical pain?</div>
                     <div>
                         <button
                             className={`pain-button ${formData.physicalPain === 'Yes' ? 'selected' : ''}`}
@@ -106,7 +107,7 @@ function PainQuestion() {
             
                 <div className='button-frame'>
                     <button className='continue-button' onClick={handleContinueClick}>
-                        {'View Results'}
+                        {'Continue'}
                     </button>
                 </div>
             </div>

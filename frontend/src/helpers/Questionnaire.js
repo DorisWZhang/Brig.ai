@@ -12,12 +12,15 @@ export const QuestionList = [
       ]
     },
     {
-      question: "Have you recently experienced any physical pain?",
-      symptoms: [
-        { id: "Yes", text: "Yes" },
-        { id: "No", text: "No" }
-      ],
-    },
+        question: "Which of the following hormonal symptoms have you experienced? Please select all that apply.",
+        symptoms: [
+          { id: "Weight gain(Y/N)", text: "Weight gain" },
+          { id: "Skin darkening (Y/N)", text: "Skin darkening" },
+          { id: "Hair loss(Y/N)", text: "Hair loss" },
+          { id: "Pimples(Y/N)", text: "Pimples" },
+          { id: "hair growth(Y/N)", text: "Excess Hair Growth"}
+        ]
+      },
     {
       question: "Which of the following gastrointestinal-related symptoms have you experienced recently? Please select all that apply.",
       symptoms: [
@@ -50,16 +53,6 @@ export const QuestionList = [
         { id: "Cysts (unspecified)", text: "Cysts (unspecified)" },
         { id: "Fertility Issues", text: "Fertility Issues" },
         { id: "Infertility", text: "Infertility" }
-      ]
-    },
-    {
-      question: "Select which symptoms apply to you.",
-      symptoms: [
-        { id: "Weight gain(Y/N)", text: "Weight gain" },
-        { id: "Skin darkening (Y/N)", text: "Skin darkening" },
-        { id: "Hair loss(Y/N)", text: "Hair loss" },
-        { id: "Pimples(Y/N)", text: "Pimples" },
-        { id: "hair growth(Y/N)", text: "Excess Hair Growth"}
       ]
     },
     {
