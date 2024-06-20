@@ -14,12 +14,7 @@ export default function Results() {
   const { questionList } = location.state || { questionList: [] };
 
   const handleBackClick = () => {
-    if (questionList.length > 0) {
-      const lastQuestionIndex = questionList.length - 1;
-      navigate(`/questionnaire`); // Navigate to the last question index
-    } else {
-      navigate('/'); // Default navigation if no questionList is found (safety fallback)
-    }
+    navigate("/");
   };
 
   return (
@@ -50,8 +45,7 @@ export default function Results() {
           <Chatbot />
         </div>
         <div className='note'>
-          All recommended diagnosis tools must be administered and discussed with a licensed medical professional. 
-        </div>
+        All recommended diagnosis tools must be administered and discussed with a licensed medical professional. Brig.ai can make mistakes. </div>
       </div>
     </div>
   );

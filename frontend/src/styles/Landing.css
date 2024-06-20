@@ -2,6 +2,7 @@
     position: absolute;
     margin-left:250px;
     margin-top:150px;
+    
 
 }
 
@@ -9,7 +10,10 @@
     font-family: Inter, var(--default-font-family);
     font-size: 45px;
     color:#242d35;
-    font-weight: 500;
+    font-weight: 600;
+}
+.logo {
+    width:250px;
 }
 .through-line {
     width:70%;

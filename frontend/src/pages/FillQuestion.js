@@ -17,13 +17,6 @@ function FillQuestion() {
         "Hip(inch)": 0,
         "Waist(inch)": 0,
         "Waist:Hip Ratio": 0,
-        "Weight gain(Y/N)": 0,
-        "hair growth(Y/N)": 0,
-        "Skin darkening (Y/N)": 0,
-        "Hair loss(Y/N)": 0,
-        "Pimples(Y/N)": 0,
-        "Fast food (Y/N)": 0,
-        "Reg.Exercise(Y/N)": 0,
         "BP _Systolic (mmHg)": 0,
         "BP _Diastolic (mmHg)": 0,
     });
@@ -36,6 +29,7 @@ function FillQuestion() {
 
     const handleContinueClick = () => {
         // Handle continue button click
+        navigate('/results')
         console.log(formData);
         // You can add your logic here, e.g., navigating to another page
         fetch('http://127.0.0.1:5000/submit', {
@@ -73,7 +67,7 @@ function FillQuestion() {
                             <label htmlFor='age'>Age (yrs):</label>
                             <input
                                 type='number'
-                                id='age'
+                                id='Age (yrs)'
                                 value={formData.age}
                                 onChange={handleInputChange}
                                 placeholder='Enter your age'
@@ -83,7 +77,7 @@ function FillQuestion() {
                             <label htmlFor='weight'>Weight (Kg):</label>
                             <input
                                 type='number'
-                                id='weight'
+                                id='Weight (Kg)'
                                 value={formData.weight}
                                 onChange={handleInputChange}
                                 placeholder='Enter your weight in Kg'
@@ -93,7 +87,7 @@ function FillQuestion() {
                             <label htmlFor='height'>Height (Cm):</label>
                             <input
                                 type='number'
-                                id='height'
+                                id='Height(Cm)'
                                 value={formData.height}
                                 onChange={handleInputChange}
                                 placeholder='Enter your height in cm'
@@ -103,7 +97,7 @@ function FillQuestion() {
                             <label htmlFor='pulse'>Pulse rate (bpm):</label>
                             <input
                                 type='number'
-                                id='pulse'
+                                id='Pulse rate(bpm)'
                                 value={formData.pulse}
                                 onChange={handleInputChange}
                                 placeholder='Enter your pulse in bpm'
@@ -115,7 +109,7 @@ function FillQuestion() {
                             <label htmlFor='rr'>Respiratory Rate (breaths/min):</label>
                             <input
                                 type='number'
-                                id='rr'
+                                id='RR (breaths/min)'
                                 value={formData.rr}
                                 onChange={handleInputChange}
                                 placeholder='Enter your respiratory rate in breaths/min'
@@ -127,7 +121,7 @@ function FillQuestion() {
                             <label htmlFor='cycleRI'>Cycle (R/I):</label>
                             <input
                                 type='text'
-                                id='cycleRI'
+                                id='Cycle(R/I)'
                                 value={formData.cycleRI}
                                 onChange={handleInputChange}
                                 placeholder='Enter R or I'
@@ -137,7 +131,7 @@ function FillQuestion() {
                             <label htmlFor='cycleLength'>Cycle length (days):</label>
                             <input
                                 type='number'
-                                id='cycleLength'
+                                id='Cycle length(days)'
                                 value={formData.cycleLength}
                                 onChange={handleInputChange}
                                 placeholder='Enter cycle length in days'
@@ -147,7 +141,7 @@ function FillQuestion() {
                             <label htmlFor='marriageStatus'>Marriage Status (Yrs):</label>
                             <input
                                 type='number'
-                                id='marriageStatus'
+                                id='Marraige Status (Yrs)'
                                 value={formData.marriageStatus}
                                 onChange={handleInputChange}
                                 placeholder='Enter years of marriage'
@@ -159,7 +153,7 @@ function FillQuestion() {
                             <label htmlFor='pregnant'>Pregnant (Y/N):</label>
                             <input
                                 type='number'
-                                id='pregnant'
+                                id='Pregnant(Y/N)'
                                 value={formData.pregnant}
                                 onChange={handleInputChange}
                                 placeholder='Enter 1 (Yes) or 0 (No)'
@@ -170,7 +164,7 @@ function FillQuestion() {
                             <label htmlFor='numberOfAbortions'>No. of abortions:</label>
                             <input
                                 type='number'
-                                id='numberOfAbortions'
+                                id='No. of abortions'
                                 value={formData.numberOfAbortions}
                                 onChange={handleInputChange}
                                 placeholder='Enter the number of abortions'
@@ -182,7 +176,7 @@ function FillQuestion() {
                             <label htmlFor='hip'>Hip (inch):</label>
                             <input
                                 type='number'
-                                id='hip'
+                                id='Hip(inch)'
                                 value={formData.hip}
                                 onChange={handleInputChange}
                                 placeholder='Enter hip size in inches'
@@ -192,7 +186,7 @@ function FillQuestion() {
                             <label htmlFor='waist'>Waist (inch):</label>
                             <input
                                 type='number'
-                                id='waist'
+                                id='Waist(inch)'
                                 value={formData.waist}
                                 onChange={handleInputChange}
                                 placeholder='Enter waist size in inches'
@@ -204,113 +198,35 @@ function FillQuestion() {
                             <label htmlFor='waistHipRatio'>Waist:Hip Ratio:</label>
                             <input
                                 type='number'
-                                id='waistHipRatio'
+                                id='Waist:Hip Ratio'
                                 value={formData.waistHipRatio}
                                 onChange={handleInputChange}
                                 placeholder='Enter waist:hip ratio'
                             />
                         </div>
-
-                        <div className='input-group'>
-                            <label htmlFor='weightGain'>Weight gain (Y/N):</label>
-                            <input
-                                type='number'
-                                id='weightGain'
-                                value={formData.weightGain}
-                                onChange={handleInputChange}
-                                placeholder='Enter 1 (Yes) or 0 (No)'
-                            />
-                        </div>
-
-                        <div className='input-group'>
-                            <label htmlFor='hairGrowth'>Hair growth (Y/N):</label>
-                            <input
-                                type='number'
-                                id='hairGrowth'
-                                value={formData.hairGrowth}
-                                onChange={handleInputChange}
-                                placeholder='Enter 1 (Yes) or 0 (No)'
-                            />
-                        </div>
-
-
-                        <div className='input-group'>
-                            <label htmlFor='skinDarkening'>Skin darkening (Y/N):</label>
-                            <input
-                                type='number'
-                                id='skinDarkening'
-                                value={formData.skinDarkening}
-                                onChange={handleInputChange}
-                                placeholder='Enter 1 (Yes) or 0 (No)'
-                            />
-                        </div>
-                    </div>
-                    <div className='row-5'>
-                        <div className='input-group'>
-                            <label htmlFor='hairLoss'>Hair loss (Y/N):</label>
-                            <input
-                                type='text'
-                                id='hairLoss'
-                                value={formData.hairLoss}
-                                onChange={handleInputChange}
-                                placeholder='Enter Y or N'
-                            />
-                        </div>
-                        <div className='input-group'>
-                            <label htmlFor='pimples'>Pimples (Y/N):</label>
-                            <input
-                                type='number'
-                                id='pimples'
-                                value={formData.pimples}
-                                onChange={handleInputChange}
-                                placeholder='Enter 1 (Yes) or 0 (No)'
-                            />
-                        </div>
-                        <div className='input-group'>
-                            <label htmlFor='fastFood'>Fast food (Y/N):</label>
-                            <input
-                                type='number'
-                                id='fastFood'
-                                value={formData.fastFood}
-                                onChange={handleInputChange}
-                                placeholder='Enter 1 (Yes) or 0 (No)'
-                            />
-                        </div>
-
-                        <div className='input-group'>
-                            <label htmlFor='regExercise'>Regular Exercise (Y/N):</label>
-                            <input
-                                type='number'
-                                id='regExercise'
-                                value={formData.regExercise}
-                                onChange={handleInputChange}
-                                placeholder='Enter 1 (Yes) or 0 (No)'
-                            />
-                        </div>
-                    </div>
-                    <div className='row-6'>
-
                         <div className='input-group'>
                             <label htmlFor='systolicBP'>Systolic Blood Pressure (mmHg):</label>
                             <input
                                 type='number'
-                                id='systolicBP'
+                                id='BP _Systolic (mmHg)'
                                 value={formData.systolicBP}
                                 onChange={handleInputChange}
                                 placeholder='Enter your systolic BP in mmHg'
                             />
-                        </div>
+                        </div>  
                         <div className='input-group'>
                             <label htmlFor='diastolicBP'>Diastolic Blood Pressure (mmHg):</label>
                             <input
                                 type='number'
-                                id='diastolicBP'
+                                id='BP _Diastolic (mmHg)'
                                 value={formData.diastolicBP}
                                 onChange={handleInputChange}
                                 placeholder='Enter your diastolic BP in mmHg'
                             />
                         </div>
+
                     </div>
+                    
                 </div>
                 <div className='button-frame'>
                     <button className='continue-button' onClick={handleContinueClick}>
