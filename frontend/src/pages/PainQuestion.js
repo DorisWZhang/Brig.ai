@@ -8,7 +8,6 @@ function PainQuestion() {
         painLevel: '',
         painDuration: ''
     });
-
     const navigate = useNavigate();
 
     const handleButtonClick = (question, answer) => {
