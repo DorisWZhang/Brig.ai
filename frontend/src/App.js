@@ -5,7 +5,7 @@ import Results from './pages/Results'
 import Landing from "./pages/Landing"
 import FillQuestion from "./pages/FillQuestion"
 import LocatePainQuestion from "./pages/LocatePainQuestion"
-
+import PainQuestion from "./pages/PainQuestion"
 
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
           <Route path="/results" element={<Results />}></Route>
           <Route path="/fillq" element={<FillQuestion />}></Route>
           <Route path='/locatepainq' element={<LocatePainQuestion/>}></Route>
+          <Route path='/painq' element={<PainQuestion/>}></Route>
         </Routes>
       </Router>
     </div>

@@ -4,23 +4,26 @@ import { useNavigate } from 'react-router-dom';
 import Body from "../assets/photos/LocatePain.png";
 
 function LocatePainQuestion() {
-    const [selectedAreas, setSelectedAreas] = useState([]);
+    const initialFormData = {
+        "Abdomen": 0,
+        "Pelvic area": 0,
+        "Lower back": 0,
+        "Vaginal area": 0,
+        "Bowel area": 0,
+    };
+
+    const [formData, setFormData] = useState(initialFormData);
 
     const navigate = useNavigate();
 
     const handleButtonClick = (area) => {
-        setSelectedAreas(prevSelected => 
-            prevSelected.includes(area) 
-                ? prevSelected.filter(item => item !== area) 
-                : [...prevSelected, area]
-        );
+        setFormData(prevFormData => ({
+            ...prevFormData,
+            [area]: 1
+        }));
     };
 
     const handleContinueClick = () => {
-        const formData = selectedAreas.reduce((acc, area) => {
-            acc[area] = true;
-            return acc;
-        }, {});
         console.log(formData);
 
         fetch('http://127.0.0.1:5000/submit', {
@@ -56,7 +59,7 @@ function LocatePainQuestion() {
                     {['Abdomen', 'Pelvic area', 'Lower back', 'Vaginal area', 'Bowel area'].map((area, index) => (
                         <button
                             key={index}
-                            className={`body-button ${selectedAreas.includes(area) ? 'selected' : ''}`}
+                            className={`body-button ${formData[area] === 1 ? 'selected' : ''}`}
                             onClick={() => handleButtonClick(area)}
                         >
                             {index + 1}. {area}
