@@ -1,27 +1,32 @@
-import React from 'react'
-import '../styles/DiagnosisCard.css'
+import React from 'react';
+import '../styles/DiagnosisCard.css';
 
-
-export default function DiagnosisCard({ name, purpose }) {
+export default function DiagnosisCard({ name, explanation, showUrgentBadge }) {
   return (
     <div className='rectangle'>
-          <div className='frame-2'>
-            <div className='frame-3'>
-              <div className='test-frame'>
-                <span className='test-name'>
-                {name}
-                </span>
-              </div>
-            </div>
-            <button className='badge-frame'>
-              <div className='badge'>
-                <span className='urgent'>Urgent</span>
-              </div>
-            </button>
+      <div className='frame-2'>
+        <div className='frame-3'>
+          <div className='test-frame'>
+            <span className='test-name'>
+              {name}
+            </span>
           </div>
-          <span className='purpose'>
-            {purpose}
-          </span>
         </div>
+        {showUrgentBadge && (
+          <button className='badge-frame'>
+            <div className='badge'>
+              <span className='urgent'> 
+                Urgent
+              </span>
+            </div>
+          </button>
+        )}
+      </div>
+      <div className='card-text'>
+        <span className='purpose'>
+          {explanation}
+        </span>
+      </div>
+    </div>
   );
 }

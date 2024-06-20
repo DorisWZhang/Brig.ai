@@ -31,5 +31,4 @@ export const DiagnosisList = [
         name: "Advanced Hormonal Testing",
         purpose: ": Testing thyroid function, androgen levels, and anti-Müllerian hormone (AMH)."
     }
-    
 ];

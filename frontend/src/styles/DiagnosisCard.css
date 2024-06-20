@@ -1,8 +1,8 @@
 .rectangle {
     flex-shrink: 0;
     position: relative;
-    width: 400px;
-    height: 144px;
+    width: 420px;
+    height: 170px;
     border: 1px solid #CFCFCF;
     z-index: 40;
     border-radius: 12px;
@@ -19,7 +19,7 @@
     gap: 12px;
     position: relative;
     width: 229px;
-    margin: 25px 0 0 42px;
+    margin: 22px 0 0 42px;
     z-index: 29;
   }
   .frame-3 {
@@ -98,18 +98,25 @@
     text-align: left;
     white-space: nowrap;
     z-index: 35;
-  }
-  .purpose {
+  }.purpose {
     display: block;
-    position: relative;
-    height: 18px;
-    margin: 16px 0 0 42px;
+    margin: 8px 0 0 35px;
     color: #6e7072;
     font-family: Inter, var(--default-font-family);
     font-size: 12px;
     font-weight: 400;
     line-height: 18px;
     text-align: left;
-    white-space: nowrap;
     z-index: 36;
-  }
+    white-space: normal; /* Allows text to wrap */
+    word-wrap: break-word; /* Breaks long words onto the next line if necessary */
+    height: auto; /* Allows height to adjust based on content */
+}
+
+.card-text {
+    width: 375px;
+    overflow: hidden;
+    white-space: normal; /* Allows text to wrap */
+    word-wrap: break-word; /* Breaks long words onto the next line if necessary */
+    height: auto; /* Allows height to adjust based on content */
+}

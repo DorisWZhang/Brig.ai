@@ -93,11 +93,38 @@
     align-items: center;
     justify-content: space-between;
     position: relative;
-    width: 863px;
-    height: 144px;
+    width: 1250px;
+    height: 200px;
     margin: 17px 0 0 162px;
     z-index: 41;
   }
+  .flex-row-eb {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    margin: 17px 0 0 162px;
+    padding-bottom: 10px; /* Add some padding at the bottom to avoid content cut-off */
+  }
+  
+  .flex-row-eb::-webkit-scrollbar {
+    height: 8px; /* Height of the horizontal scrollbar */
+  }
+  
+  .flex-row-eb::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+  }
+  
+  .flex-row-eb::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  .flex-row-eb > * {
+    display: inline-block;
+    white-space: normal;
+    margin-right: 16px; /* Add margin between cards */
+  }
+  
   .frame-a {
     display: flex;
     flex-direction: column;
@@ -135,7 +162,7 @@
   }
   
   .chatbot {
-    margin-top: 24%;
+    margin-top: 20%;
     margin-left: 10%;
   }
   .message {
@@ -145,6 +172,7 @@
     margin-left:150px;
     margin-top:20px;
     margin-bottom:30px;
+    width: 1000px;
   }
   .note {
     color: #6e7072;
