@@ -1,7 +1,7 @@
 .landing {
     position: absolute;
     margin-left:250px;
-    margin-top:150px;
+    margin-top:200px;
     
 
 }
@@ -25,7 +25,7 @@
     font-weight: 300;
 }
 .start-button {
-    margin-top: 30px;
+    margin-top: 40px;
     font-family: Inter, var(--default-font-family);
     font-size: 25px;
     cursor: pointer;
@@ -39,6 +39,6 @@
 }
 .start-button:hover {
     transition-duration: 0.3s;
-    background: black;
+    background: #63335C;
 }
 

@@ -44,6 +44,7 @@
 .input-group label {
     font-weight: bold;
     margin-bottom: 8px;
+    
 }
 
 .input-group input {
@@ -54,4 +55,10 @@
     margin-top: 5px;
     height: 25px;
     font-size: 15px;
+    color: #63335C;
+}
+
+.input-group ::placeholder {
+    color:#63335C;
+    opacity: 0.7;
 }
