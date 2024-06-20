@@ -14,6 +14,12 @@ CORS(app)
 with open('./models/GradientBoosting_model.pkl', 'rb') as file:
     clf = pickle.load(file)
 
+with open('./models/AdaBoost_model.pkl', 'rb') as file:
+    abc = pickle.load(file)
+
+with open('./models/logistic_regression_model.pkl', 'rb') as file:
+    logistic_regression = pickle.load(file)
+
 with open('./models/KMeans_model.pkl', 'rb') as file:
     kmeans = pickle.load(file)
 
@@ -126,17 +132,22 @@ def submit_final():
         [pcos_predict_features], columns=PCOS_PREDICT_JSON.keys())
     pcos_predict_df.columns = pcos_predict_df.columns.str.strip()
     pcos_predict_df_scaled = scaler.transform(pcos_predict_df)
-    pcos_severity_prediction = clf.predict_proba(
-        pcos_predict_df_scaled)[1].tolist()
-
+    pcos_severity_prediction = abc.predict_proba(
+        pcos_predict_df_scaled)[0][1]
+    
     # pcos cluster prediction
-    pcos_cluster_predictions = kmeans.predict(pcos_predict_df_scaled).tolist()
+    logistic_predictions = logistic_regression.predict(pcos_predict_df_scaled).reshape(1, -1)
+    pcos_cluster_predictions = kmeans.predict(logistic_predictions).tolist()
 
     response = {'endo_severity': endo_severity_prediction,
                 'endo_cluster': endo_cluster_prediction,
-                'pcos_severity': pcos_severity_prediction[0],
+                'pcos_severity': pcos_severity_prediction,
                 'pcos_cluster': pcos_cluster_predictions[0]}
     print(response)
+
+     # Ensuring all values in response are JSON serializable
+    response = {k: (v.tolist() if isinstance(v, np.ndarray) else v) for k, v in response.items()}
+    
     return jsonify(response)
 
 
