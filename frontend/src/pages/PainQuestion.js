@@ -4,22 +4,39 @@ import { useNavigate } from 'react-router-dom';
 
 function PainQuestion() {
     const [formData, setFormData] = useState({
-        physicalPain: '',
+        
         painLevel: '',
-        painDuration: ''
     });
+
     const navigate = useNavigate();
 
     const handleButtonClick = (question, answer) => {
-        setFormData(prevState => ({
-            ...prevState,
-            [question]: prevState[question] === answer ? '' : answer
-        }));
+        if (question === 'painLevel') {
+            // Special handling for 'painLevel' to map 'High' to 'Extreme / Severe pain'
+            if (answer === 'High') {
+                setFormData(prevState => ({
+                    ...prevState,
+                    painLevel: 'High',
+                    'Extreme / Severe pain': 1
+                }));
+            } else {
+                setFormData(prevState => ({
+                    ...prevState,
+                    painLevel: answer,
+                    'Extreme / Severe pain': 0
+                }));
+            }
+        } else {
+            setFormData(prevState => ({
+                ...prevState,
+                [question]: prevState[question] === answer ? '' : answer
+            }));
+        }
     };
 
     const handleContinueClick = () => {
         console.log(formData);
-        fetch('http://127.0.0.1:5000/submit', {
+        fetch('http://127.0.0.1:5000/update', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

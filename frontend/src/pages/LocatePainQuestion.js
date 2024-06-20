@@ -5,28 +5,38 @@ import Body from "../assets/photos/LocatePain.png";
 
 function LocatePainQuestion() {
     const initialFormData = {
-        "Abdomen": 0,
-        "Pelvic area": 0,
-        "Lower back": 0,
-        "Vaginal area": 0,
-        "Bowel area": 0,
+        "Abdominal pain / pressure": 0,
+        "Pelvic pain": 0,
+        "Lower back pain": 0,
+        "Vaginal Pain/Pressure": 0,
+        "Bowel pain": 0,
     };
 
     const [formData, setFormData] = useState(initialFormData);
-
     const navigate = useNavigate();
 
-    const handleButtonClick = (area) => {
+    // Mapping between UI display and formData keys
+    const bodyAreas = [
+        { key: "Abdominal pain / pressure", label: "Abdomen" },
+        { key: "Pelvic pain", label: "Pelvic area" },
+        { key: "Lower back pain", label: "Lower back" },
+        { key: "Vaginal Pain/Pressure", label: "Vaginal area" },
+        { key: "Bowel pain", label: "Bowel area" },
+    ];
+
+    const handleButtonClick = (areaKey) => {
+        // Update formData
         setFormData(prevFormData => ({
             ...prevFormData,
-            [area]: 1
+            [areaKey]: prevFormData[areaKey] === 1 ? 0 : 1 // Toggle between 0 and 1
         }));
     };
 
     const handleContinueClick = () => {
         console.log(formData);
 
-        fetch('http://127.0.0.1:5000/submit', {
+        // Send formData to the backend
+        fetch('http://127.0.0.1:5000/update', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -56,13 +66,13 @@ function LocatePainQuestion() {
                     <img src={Body} className='body'/>
                 </div>
                 <div className='area-buttons'>
-                    {['Abdomen', 'Pelvic area', 'Lower back', 'Vaginal area', 'Bowel area'].map((area, index) => (
+                    {bodyAreas.map((area, index) => (
                         <button
                             key={index}
-                            className={`body-button ${formData[area] === 1 ? 'selected' : ''}`}
-                            onClick={() => handleButtonClick(area)}
+                            className={`body-button ${formData[area.key] === 1 ? 'selected' : ''}`}
+                            onClick={() => handleButtonClick(area.key)}
                         >
-                            {index + 1}. {area}
+                            {index + 1}. {area.label}
                         </button>
                     ))}
                 </div>

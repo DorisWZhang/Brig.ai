@@ -2,6 +2,7 @@
     position: absolute;
     margin-left:250px;
     margin-top:150px;
+    
 
 }
 
@@ -12,7 +13,7 @@
     font-weight: 600;
 }
 .logo {
-    width:100px;
+    width:250px;
 }
 .through-line {
     width:70%;
