@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import "../styles/FillQuestion.css";
 import { useNavigate } from 'react-router-dom';
+import Logo from "../assets/photos/brig.png"
+
 
 function FillQuestion() {
     const [formData, setFormData] = useState({
@@ -57,6 +59,7 @@ function FillQuestion() {
         <div className='question-screen'>
             <div className='frame'>
                 <button className='back' onClick={handleBackClick}>Back</button>
+                <img src={Logo} className='corner-logo'/>
                 <div className='input-groups'>
                     <div className='row-1'>
                         <div className='input-group'>

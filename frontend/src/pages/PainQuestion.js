@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import "../styles/PainQuestion.css";
 import { useNavigate } from 'react-router-dom';
+import Logo from "../assets/photos/brig.png"
 
 function PainQuestion() {
     const [formData, setFormData] = useState({
@@ -61,6 +62,7 @@ function PainQuestion() {
         <div className='question-screen'>
             <div className='frame'>
                 <button className='back' onClick={handleBackClick}>Back</button>
+                <img src={Logo} className='corner-logo'/>
                 <div className='row1'>
                     <div>Have you recently experienced any physical pain?</div>
                     <div>

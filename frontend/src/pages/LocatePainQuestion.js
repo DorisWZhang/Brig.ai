@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import "../styles/LocatePainQuestion.css";
 import { useNavigate } from 'react-router-dom';
 import Body from "../assets/photos/LocatePain.png";
+import Logo from "../assets/photos/brig.png"
 
 function LocatePainQuestion() {
     const initialFormData = {
@@ -61,6 +62,7 @@ function LocatePainQuestion() {
         <div className='question-screen'>
             <div className='frame'>
                 <button className='back' onClick={handleBackClick}>Back</button>
+                <img src={Logo} className='corner-logo'/>
                 <div className='locate-pain'> Please specify the location of pain. </div>
                 <div className='image'>
                     <img src={Body} className='body'/>

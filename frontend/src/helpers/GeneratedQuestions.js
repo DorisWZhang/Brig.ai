@@ -11,7 +11,7 @@ export const GeneratedQuestionsList = [
         
     },
     {
-        question: "What are my rights in asking for a transvaginal ultrasound?"
+        question: "What are my rights in asking for this test?"
     },
     {
         question: "Is this procedure intrusive?"

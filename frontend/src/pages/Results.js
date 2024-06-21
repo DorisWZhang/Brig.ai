@@ -7,6 +7,7 @@ import { GeneratedQuestionsList } from '../helpers/GeneratedQuestions';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Chatbot from "../components/Chatbot";
 import { DiagnosticGroups } from '../helpers/DiagnosticGroup';
+import Logo from "../assets/photos/brig.png"
 
 export default function Results() {
   const navigate = useNavigate();
@@ -55,13 +56,16 @@ export default function Results() {
   return (
     <div className='main'>
       <div className='main-frame'>
-        <div className='frame-1'>
           <button className='button-medium' onClick={handleBackClick}>
             <FaArrowLeft />
           </button>
-        </div>
+      
+        
         <span className='back-to-qs'>Back</span>
+        
+      
       </div>
+      <img src={Logo} className='corner-logo-results'/>
       <div className='message'>
         {message || 'No specific diagnostic tests recommended based on the provided data.'}
       </div>

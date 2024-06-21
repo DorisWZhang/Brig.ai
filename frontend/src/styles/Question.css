@@ -118,3 +118,9 @@ button {
   transition: 0.3s;
   background-color: #63335C;
 }
+.corner-logo {
+  width: 140px;
+  position: absolute;
+  margin-left: 85%;
+  margin-top: 0;
+}

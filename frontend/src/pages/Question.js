@@ -3,6 +3,7 @@ import "../styles/Question.css";
 import { useNavigate } from 'react-router-dom';
 import { QuestionList } from '../helpers/Questionnaire';
 import Symptom from "../components/Symptom";
+import Logo from "../assets/photos/brig.png"
 
 function Question() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -80,6 +81,7 @@ function Question() {
     <div className='question-screen'>
       <div className='frame'>
         <button className='back' onClick={handleBackClick}>Back</button>
+        <img src={Logo} className='corner-logo'/>
         <div className='frame-4'>
           <span className='symp-question'>
             {question.question}
