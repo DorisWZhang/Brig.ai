@@ -84,13 +84,16 @@ button {
   flex-wrap: wrap; /* Ensures the items wrap to the next line */
   width: 100%; /* Ensure it takes full width of parent */
 }
+.symp-1 > * {
+  margin-top: 0%; /* Vertical space before items start on the next row */
+}
 .symp-2 {
   position: absolute;
   margin-top:20%;
 }
 .button-frame {
   align-items: center;
-  margin-top: 43%;
+  margin-top: 42%;
 }
 .continue-button {
   margin-left: 17%;
@@ -123,4 +126,25 @@ button {
   position: absolute;
   margin-left: 85%;
   margin-top: 0;
+}
+
+@media only screen and (max-width: 1300px) {
+  .button-frame {
+    align-items: center;
+    margin-top: 53%;
+  }
+  .symp-question {
+    width:800px;
+  }
+  .symp-1 > * {
+    margin-top: 2%; /* Vertical space before items start on the next row */
+  }
+  .symp-2 {
+    margin-top:28%;
+  }
+  .continue-button {
+    width: 800px;
+
+  }
+
 }

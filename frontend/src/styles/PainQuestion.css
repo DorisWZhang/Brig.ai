@@ -90,3 +90,28 @@
     background-color: #63335C;
     color: white;
   }
+
+  @media only screen and (max-width: 1300px) {
+    .row1,
+    .row2,
+    .row3 {
+      position:absolute;
+      margin-top: 50px;
+      margin-left: 200px;
+      font-family: Inter, var(--default-font-family);
+      font-size: 24px;
+      font-weight: 500;
+    }
+  
+    .row2 {
+      margin-top:200px;
+    }
+  
+    .row3 {
+      margin-top: 375px;
+    }
+  
+  
+    
+  
+  }

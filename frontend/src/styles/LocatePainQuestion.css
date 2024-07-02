@@ -96,3 +96,29 @@
     /* Example: Change background color when selected */
     color: white;
   }
+  @media only screen and (max-width: 1300px) {
+    
+    .image {
+        position:absolute;
+        margin-top: 125px;
+        margin-left: 150px;
+      }
+      .locate-pain {
+        position: absolute;
+        font-size: 22px;
+        font-weight: 500;
+        margin-left: 220px;
+        margin-top: 50px;
+      }
+      .area-buttons {
+        margin-left: 650px;
+        position: absolute;
+        display: flex;
+        white-space: normal;
+        margin-top:15%;
+        position:absolute;
+        flex-wrap: wrap; /* Ensures the items wrap to the next line */
+        width: 40%; /* Ensure it takes full width of parent */
+      }
+  
+  }
