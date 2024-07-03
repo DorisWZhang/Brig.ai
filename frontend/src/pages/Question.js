@@ -87,7 +87,7 @@ function Question() {
             {question.question}
           </span>
           <div className='symp-1'>
-            {question.symptoms.slice(0, 5).map((symptom, index) => (
+            {question.symptoms.map((symptom, index) => (
               <Symptom
                 key={index}
                 symptom={symptom}
@@ -96,18 +96,8 @@ function Question() {
               />
             ))}
           </div>
-          {question.symptoms.length > 5 && (
-            <div style={{ display: 'flex' }} className='symp-2'>
-              {question.symptoms.slice(5).map((symptom, index) => (
-                <Symptom
-                  key={index + 5}
-                  symptom={symptom}
-                  isSelected={currentPageSymptoms[symptom.id] === 1}
-                  updateSelected={updateSelectedSymptoms}
-                />
-              ))}
-            </div>
-          )}
+         
+          
         </div>
         <div className='button-frame'>
           <button className='continue-button' onClick={handleContinueClick}>

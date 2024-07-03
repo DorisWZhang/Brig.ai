@@ -122,3 +122,29 @@
       }
   
   }
+  @media only screen and (max-width: 900px) {
+    
+    .image {
+        position:absolute;
+        margin-top: 200px;
+        margin-left: 75px;
+      }
+      .locate-pain {
+        position: absolute;
+        font-size: 22px;
+        font-weight: 500;
+        margin-left: 200px;
+        margin-top: 100px;
+      }
+      .area-buttons {
+        margin-left: 550px;
+        position: absolute;
+        display: flex;
+        white-space: normal;
+        margin-top:20%;
+        position:absolute;
+        flex-wrap: wrap; /* Ensures the items wrap to the next line */
+        width: 30%; /* Ensure it takes full width of parent */
+      }
+  
+  }
