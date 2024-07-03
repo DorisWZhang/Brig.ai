@@ -16,10 +16,10 @@ Women are dismissed and misdiagnosed at the symptom-reporting stage due to a lac
 With Brig.ai, users are able to fill out a short questionnaire regarding their symptoms and be matched with the most efficient diagnostic tests to seek from a doctor. Brig.ai puts the power into the women's hands, allowing them to self-educate on diagnostic tests and be empowered to advocate in the doctor's office. 
 
 <img src='frontend/src/assets/photos/SymptomPage.png'
-  width= 400>
+  width= 800>
 
   <img src='frontend/src/assets/photos/Results Page.png'
-  width= 400>
+  width= 800>
   
 <h2>Dataset</h2>
 
