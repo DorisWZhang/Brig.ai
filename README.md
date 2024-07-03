@@ -1,6 +1,6 @@
 <h1>Brig.ai</h1>
 
-<h2><b>Bridging the gap between patients and medical professionals</b><h2>
+<b>Bridging the gap between patients and medical professionals</b>
 
 
 
