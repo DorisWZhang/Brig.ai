@@ -17,6 +17,9 @@ With Brig.ai, users are able to fill out a short questionnaire regarding their s
 
 <img src='frontend/src/assets/photos/SymptomPage.png'
   width= 500>
+
+  <img src='frontend/src/assets/photos/Results Page.png'
+  width= 500>
   
 <h2>Dataset</h2>
 
