@@ -188,3 +188,14 @@
     margin-left: 85%;
     margin-top: -15px;
   }
+
+  
+@media only screen and (max-width: 1300px) {
+  .message {
+    width: 70%;
+  }
+  .note {
+    width: 80%;
+    margin-left: 100px;
+  }
+}

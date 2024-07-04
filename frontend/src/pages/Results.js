@@ -67,7 +67,7 @@ export default function Results() {
       </div>
       <img src={Logo} className='corner-logo-results'/>
       <div className='message'>
-        {message || 'No specific diagnostic tests recommended based on the provided data.'}
+        {message || 'Brig.ai could not match you to any specific recommended diagnostic tests based on the provided data.'}
       </div>
       <div className='flex-row-eb'>
         {uniqueDiagnosticTests.map((test, idx) => (
