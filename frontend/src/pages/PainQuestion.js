@@ -14,7 +14,13 @@ function PainQuestion() {
     const handleButtonClick = (question, answer) => {
         if (question === 'painLevel') {
             // Special handling for 'painLevel' to map 'High' to 'Extreme / Severe pain'
-            if (answer === 'High') {
+            if (formData.painLevel === answer) {
+                setFormData(prevState => ({
+                    ...prevState,
+                    painLevel: '',
+                    'Extreme / Severe pain': 0
+                }));
+            } else if (answer === 'High') {
                 setFormData(prevState => ({
                     ...prevState,
                     painLevel: 'High',
