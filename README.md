@@ -1,6 +1,6 @@
 <h1>Brig.ai</h1>
 
-Check it out here: https://brig-ai.vercel.app/results
+Check it out the web app here: https://brig-ai.vercel.app/
 
 <b>Bridging the gap between patients and medical professionals</b>
 
