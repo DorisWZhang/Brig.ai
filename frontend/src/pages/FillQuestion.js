@@ -33,7 +33,7 @@ function FillQuestion() {
         // Handle continue button click
         console.log(formData);
         // You can add your logic here, e.g., navigating to another page
-        fetch('http://127.0.0.1:5000/submit', {
+        fetch('https://brig-backend-imqv.onrender.com/submit', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

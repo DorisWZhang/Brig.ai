@@ -31,7 +31,7 @@ function Question() {
 
   // Save symptoms to server
   const saveSymptoms = () => {
-    fetch('http://127.0.0.1:5000/update', {
+    fetch('https://brig-backend-imqv.onrender.com/update', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

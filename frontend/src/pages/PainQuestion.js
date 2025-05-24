@@ -43,7 +43,7 @@ function PainQuestion() {
 
     const handleContinueClick = () => {
         console.log(formData);
-        fetch('http://127.0.0.1:5000/update', {
+        fetch('https://brig-backend-imqv.onrender.com/update', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
