@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: brig-backend
+    env: python
+    plan: free
+    region: oregon
+    buildCommand: ""
+    startCommand: python app.py
+    envVars:
+      - key: PORT
+        value: 10000
+    autoDeploy: true
+    repo: https://github.com/DorisWZhang/Brig.ai
+    branch: master
+    rootDir: backend
