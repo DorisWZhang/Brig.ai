@@ -50,11 +50,21 @@ def create_app():
                 ENDO_PREDICT_JSON[key] = input_data[key]
             if key in PCOS_PREDICT_JSON:
                 PCOS_PREDICT_JSON[key] = input_data[key]
-        return jsonify({
-            'Updated cluster json': ENDO_CLUSTER_JSON,
-            'Updated predict json': ENDO_PREDICT_JSON,
-            'Updated pcos json': PCOS_PREDICT_JSON
-        })
+
+    # Convert any sets to lists before returning
+    def make_json_safe(obj):
+        if isinstance(obj, set):
+            return list(obj)
+        if isinstance(obj, dict):
+            return {k: make_json_safe(v) for k, v in obj.items()}
+        return obj
+
+    return jsonify({
+        'Updated cluster json': make_json_safe(ENDO_CLUSTER_JSON),
+        'Updated predict json': make_json_safe(ENDO_PREDICT_JSON),
+        'Updated pcos json': make_json_safe(PCOS_PREDICT_JSON)
+    })
+
 
     @app.route('/submit', methods=['POST'])
     def submit_final():
